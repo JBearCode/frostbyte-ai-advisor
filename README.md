@@ -123,3 +123,5 @@ User
        └── FrostByte Operator (child agent)
              └── Dataverse MCP Server  ← write operations
 ```
+
+  ![FrostByte Architecture](Frostbyte-Diagram-Architecture.png)
