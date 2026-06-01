@@ -125,3 +125,7 @@ User
 ```
 
   ![FrostByte Architecture](Frostbyte-Diagram-Architecture.png)
+
+## Data
+Sample data is not yet included in this repo. If desired, please contact me and I can get that added.
+ 
