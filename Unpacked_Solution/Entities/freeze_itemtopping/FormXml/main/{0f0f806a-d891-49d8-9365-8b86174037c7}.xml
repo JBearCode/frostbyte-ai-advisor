@@ -1,0 +1,132 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<forms xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <systemform>
+    <formid>{0f0f806a-d891-49d8-9365-8b86174037c7}</formid>
+    <IntroducedVersion>1.0.0.0</IntroducedVersion>
+    <FormPresentation>1</FormPresentation>
+    <FormActivationState>1</FormActivationState>
+    <form>
+      <tabs>
+        <tab verticallayout="true" id="{c2244432-3bb1-4c69-9116-ddbc81390be6}" IsUserDefined="1">
+          <labels>
+            <label description="General" languagecode="1033" />
+          </labels>
+          <columns>
+            <column width="100%">
+              <sections>
+                <section showlabel="false" showbar="false" IsUserDefined="0" id="{0e138386-f2c7-4df5-800d-51801417982d}">
+                  <labels>
+                    <label description="General" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell id="{fce67ce7-6439-43f4-a24d-8637e74852cb}">
+                        <labels>
+                          <label description="Item Topping Name" languagecode="1033" />
+                        </labels>
+                        <control id="freeze_name" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="freeze_name" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{d567aed1-4fa6-4931-911b-3476cfaa0d50}">
+                        <labels>
+                          <label description="Owner" languagecode="1033" />
+                        </labels>
+                        <control id="ownerid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="ownerid" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{159e441e-2bb6-472c-87f3-e1265cfa2fe9}" locklevel="0" rowspan="1" colspan="1">
+                        <labels>
+                          <label description="Order Item" languagecode="1033" />
+                        </labels>
+                        <control id="freeze_order_item" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="freeze_order_item" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{12c02f3a-c790-4578-af51-585978d5fd47}" locklevel="0" rowspan="1" colspan="1">
+                        <labels>
+                          <label description="Quantity" languagecode="1033" />
+                        </labels>
+                        <control id="freeze_quantity" classid="{C6D124CA-7EDA-4A60-AEA9-7FB8D318B68F}" datafieldname="freeze_quantity" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{e0c28f02-40a0-4da4-b1f1-b948574108a4}" locklevel="0" rowspan="1" colspan="1">
+                        <labels>
+                          <label description="Topping" languagecode="1033" />
+                        </labels>
+                        <control id="freeze_topping" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="freeze_topping" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{afc63039-5911-40a3-8505-26bd2e563730}" locklevel="0" rowspan="1" colspan="1">
+                        <labels>
+                          <label description="Topping Price" languagecode="1033" />
+                        </labels>
+                        <control id="freeze_topping_price" classid="{533B9E00-756B-4312-95A0-DC888637AC78}" datafieldname="freeze_topping_price" disabled="false" />
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+              </sections>
+            </column>
+          </columns>
+        </tab>
+      </tabs>
+      <header id="{4dfa4e67-08cf-4048-b989-363fff96b10f}" celllabelposition="Top" columns="111" labelwidth="115" celllabelalignment="Left">
+        <rows>
+          <row>
+            <cell id="{dccbc732-7be8-4ce6-b972-1a3d7acb42f1}" showlabel="false">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{2b0f1d3a-cc5d-4ebc-85c4-b0837c0b3ede}" showlabel="false">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{11716b37-fabc-46da-9804-321ac20052fd}" showlabel="false">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+          </row>
+        </rows>
+      </header>
+      <footer id="{e1e16630-c99e-4267-bf85-5296ac96df7e}" celllabelposition="Top" columns="111" labelwidth="115" celllabelalignment="Left">
+        <rows>
+          <row>
+            <cell id="{baf003e4-ba2f-4d93-9371-5e28404829cc}" showlabel="false">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{86577958-2680-4d2c-a240-d0b25d9051f1}" showlabel="false">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{e0be30d5-659b-4e11-b999-521f410665e9}" showlabel="false">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+          </row>
+        </rows>
+      </footer>
+      <DisplayConditions Order="0" FallbackForm="true">
+        <Everyone />
+      </DisplayConditions>
+    </form>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>1</CanBeDeleted>
+    <LocalizedNames>
+      <LocalizedName description="Information" languagecode="1033" />
+    </LocalizedNames>
+    <Descriptions>
+      <Description description="A form for this entity." languagecode="1033" />
+    </Descriptions>
+  </systemform>
+</forms>

@@ -1,0 +1,30 @@
+{
+  "$kind": "BotConfiguration",
+  "settings": {
+    "GenerativeActionsEnabled": true
+  },
+  "isAgentConnectable": true,
+  "gPTSettings": {
+    "$kind": "GPTSettings",
+    "defaultSchemaName": "freeze_FrostByteOperator.gpt.default"
+  },
+  "aISettings": {
+    "$kind": "AISettings",
+    "useModelKnowledge": true,
+    "isFileAnalysisEnabled": true,
+    "isSemanticSearchEnabled": true,
+    "contentModeration": "Low",
+    "optInUseLatestModels": false,
+    "contentModerationOverrides": {
+      "$kind": "ContentModerationOverrides",
+      "allowHate": false,
+      "allowSelfHarm": false,
+      "allowSexual": false,
+      "allowViolence": false,
+      "diagnostics": []
+    }
+  },
+  "recognizer": {
+    "$kind": "GenerativeAIRecognizer"
+  }
+}

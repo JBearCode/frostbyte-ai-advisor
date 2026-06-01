@@ -1,0 +1,100 @@
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_sharepointonline": {
+        "api": {
+          "name": "shared_sharepointonline"
+        },
+        "connection": {
+          "connectionReferenceLogicalName": "cts_contosoHelpdeskAgent.shared_sharepointonline.17da651fa6414094beb99dc31931df56"
+        },
+        "runtimeSource": "embedded"
+      },
+      "shared_commondataserviceforapps": {
+        "api": {
+          "name": "shared_commondataserviceforapps"
+        },
+        "connection": {
+          "connectionReferenceLogicalName": "contoso_sharedcommondataserviceforapps_b204d"
+        },
+        "runtimeSource": "embedded"
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        },
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        }
+      },
+      "triggers": {
+        "When_a_file_is_created_(properties_only)": {
+          "type": "OpenApiConnection",
+          "inputs": {
+            "parameters": {
+              "dataset": "https://t0sxb.sharepoint.com/sites/BrainFreezeIceCream",
+              "table": "44327dc0-16e7-4cc2-94de-865dfbab3118",
+              "folderPath": "/Shared Documents/Competitor Flyers"
+            },
+            "host": {
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_sharepointonline",
+              "operationId": "GetOnNewFileItems",
+              "connectionName": "shared_sharepointonline"
+            }
+          },
+          "recurrence": {
+            "interval": 1,
+            "frequency": "Minute"
+          },
+          "splitOn": "@triggerOutputs()?['body/value']"
+        }
+      },
+      "actions": {
+        "Run_a_prompt": {
+          "type": "OpenApiConnection",
+          "inputs": {
+            "parameters": {
+              "recordId": "02fb0711-7c3a-48e9-9ee5-fff8ee01f027",
+              "item/requestv2/FlyerFile/base64Encoded": "@base64(body('Get_file_content'))"
+            },
+            "host": {
+              "apiId": "providers/Microsoft.ProcessSimple/operationGroups/aibuilder",
+              "operationId": "aibuilderpredict_customprompt",
+              "connectionName": "shared_commondataserviceforapps"
+            }
+          },
+          "runAfter": {
+            "Get_file_content": [
+              "Succeeded"
+            ]
+          }
+        },
+        "Get_file_content": {
+          "type": "OpenApiConnection",
+          "inputs": {
+            "parameters": {
+              "dataset": "https://t0sxb.sharepoint.com/sites/BrainFreezeIceCream",
+              "id": "@triggerBody()?['{Identifier}']",
+              "inferContentType": true
+            },
+            "host": {
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_sharepointonline",
+              "operationId": "GetFileContent",
+              "connectionName": "shared_sharepointonline"
+            }
+          },
+          "runAfter": {}
+        }
+      },
+      "outputs": {}
+    },
+    "templateName": null
+  },
+  "schemaVersion": "1.0.0.0"
+}

@@ -1,0 +1,4 @@
+kind: KnowledgeSourceConfiguration
+source:
+  kind: DataverseStructuredSearchSource
+  skillConfiguration: Topping_TaxRatePromotionProductOrderItemOrderItemToppingFlavor_zk6Bsu2CNew91IdrVF8gr

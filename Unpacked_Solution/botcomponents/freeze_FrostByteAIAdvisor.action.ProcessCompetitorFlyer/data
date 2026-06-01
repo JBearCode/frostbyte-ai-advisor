@@ -1,0 +1,14 @@
+kind: TaskDialog
+inputs:
+  - kind: AutomaticTaskInput
+    propertyName: FlyerFile
+    name: FlyerFile
+    shouldPromptUser: true
+
+modelDisplayName: Process Competitor Flyer
+modelDescription: Process Competitor Flyer
+action:
+  kind: InvokeAIBuilderModelTaskAction
+  aIModelId: 02fb0711-7c3a-48e9-9ee5-fff8ee01f027
+
+outputMode: All

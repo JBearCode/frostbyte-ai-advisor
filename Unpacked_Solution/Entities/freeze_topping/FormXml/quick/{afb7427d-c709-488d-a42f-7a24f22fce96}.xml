@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<forms xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <systemform>
+    <formid>{afb7427d-c709-488d-a42f-7a24f22fce96}</formid>
+    <IntroducedVersion>1.0.0.0</IntroducedVersion>
+    <FormPresentation>1</FormPresentation>
+    <FormActivationState>1</FormActivationState>
+    <form>
+      <tabs>
+        <tab verticallayout="true" id="{c4626035-2ae0-4b57-a9a3-ce8a287a28f2}" IsUserDefined="1">
+          <labels>
+            <label description="" languagecode="1033" />
+          </labels>
+          <columns>
+            <column width="100%">
+              <sections>
+                <section showlabel="false" showbar="false" IsUserDefined="0" id="{e8660311-52f2-49ef-b446-b814a4c78363}">
+                  <labels>
+                    <label description="GENERAL" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell id="{5403da7e-91a8-4752-af48-9bdd52c36128}">
+                        <labels>
+                          <label description="Topping Name" languagecode="1033" />
+                        </labels>
+                        <control id="freeze_name" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="freeze_name" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{f55d4d8a-043a-4909-8f55-d069f643d632}">
+                        <labels>
+                          <label description="Owner" languagecode="1033" />
+                        </labels>
+                        <control id="ownerid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="ownerid" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{50d29ff4-01d1-4692-8d8d-65edb84a2ecf}" locklevel="0" rowspan="1" colspan="1">
+                        <labels>
+                          <label description="Topping Code" languagecode="1033" />
+                        </labels>
+                        <control id="freeze_topping_code" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="freeze_topping_code" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{d9f37bb6-5e1d-479b-bc57-c8b9b06db896}" locklevel="0" rowspan="1" colspan="1">
+                        <labels>
+                          <label description="Category" languagecode="1033" />
+                        </labels>
+                        <control id="freeze_category" classid="{3EF39988-22BB-4F0B-BBBE-64B5A3748AEE}" datafieldname="freeze_category" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{737ae0d3-f9c9-4e99-9768-ddb5d91ea32c}" locklevel="0" rowspan="1" colspan="1">
+                        <labels>
+                          <label description="Is Premium" languagecode="1033" />
+                        </labels>
+                        <control id="freeze_is_premium" classid="{67FAC785-CD58-4F9F-ABB3-4B7DDC6ED5ED}" datafieldname="freeze_is_premium" disabled="false" />
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+              </sections>
+            </column>
+          </columns>
+        </tab>
+      </tabs>
+      <DisplayConditions Order="0" FallbackForm="true">
+        <Everyone />
+      </DisplayConditions>
+    </form>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>1</CanBeDeleted>
+    <LocalizedNames>
+      <LocalizedName description="Information" languagecode="1033" />
+    </LocalizedNames>
+  </systemform>
+</forms>

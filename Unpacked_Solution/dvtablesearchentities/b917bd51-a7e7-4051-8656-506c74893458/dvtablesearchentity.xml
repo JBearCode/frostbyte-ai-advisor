@@ -1,0 +1,10 @@
+<dvtablesearchentity dvtablesearchentityid="b917bd51-a7e7-4051-8656-506c74893458">
+  <dvtablesearch>
+    <dvtablesearchid>d60e2145-d343-49cd-abde-d6e441c2a5a9</dvtablesearchid>
+  </dvtablesearch>
+  <entitylogicalname>freeze_taxrate</entitylogicalname>
+  <iscustomizable>0</iscustomizable>
+  <name>freeze_taxrate</name>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+</dvtablesearchentity>

@@ -1,0 +1,17 @@
+<botcomponent_workflowset>
+  <botcomponent_workflow botcomponentid.schemaname="freeze_FrostByteAIAdvisor.ExternalTriggerComponent.WeeklyPromoRe.408b6e6e-6826-41e3-964c-d0b5bace0ff" workflowid.workflowid="89493899-d35b-f111-bec7-0022480afb68">
+    <iscustomizable>1</iscustomizable>
+  </botcomponent_workflow>
+  <botcomponent_workflow botcomponentid.schemaname="freeze_FrostByteAIAdvisor.topic.DemandForecasting" workflowid.workflowid="aa73bfd3-065a-f111-bec7-0022480afbf1">
+    <iscustomizable>1</iscustomizable>
+  </botcomponent_workflow>
+  <botcomponent_workflow botcomponentid.schemaname="freeze_FrostByteAIAdvisor.topic.PricingScenarios" workflowid.workflowid="dfb1c48d-025a-f111-bec7-0022480afbf1">
+    <iscustomizable>1</iscustomizable>
+  </botcomponent_workflow>
+  <botcomponent_workflow botcomponentid.schemaname="freeze_FrostByteAIAdvisor.topic.PromotionAnalysis.topic" workflowid.workflowid="2fde6103-6863-619d-0e59-831fcb976470">
+    <iscustomizable>1</iscustomizable>
+  </botcomponent_workflow>
+  <botcomponent_workflow botcomponentid.schemaname="freeze_FrostByteAIAdvisor.topic.SalesIntelligence.topic" workflowid.workflowid="7ff499e2-c333-3eca-8bb6-2ab1c9411093">
+    <iscustomizable>1</iscustomizable>
+  </botcomponent_workflow>
+</botcomponent_workflowset>

@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<savedqueries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <savedquery>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>0</CanBeDeleted>
+    <isquickfindquery>1</isquickfindquery>
+    <isprivate>0</isprivate>
+    <isdefault>1</isdefault>
+    <savedqueryid>{0f4db729-97dc-4416-94de-1aa4ec97cdd5}</savedqueryid>
+    <layoutxml>
+      <grid name="resultset" jump="freeze_name" select="1" icon="1" preview="1">
+        <row name="result" id="freeze_taxrateid">
+          <cell name="freeze_name" width="300" />
+          <cell name="createdon" width="125" />
+          <cell name="freeze_tax_percentage" width="126" />
+          <cell name="freeze_effective_date" width="121" />
+          <cell name="freeze_expiration_date" width="130" />
+          <cell name="freeze_jurisdiction" width="106" />
+        </row>
+      </grid>
+    </layoutxml>
+    <querytype>4</querytype>
+    <fetchxml>
+      <fetch version="1.0" mapping="logical">
+        <entity name="freeze_taxrate">
+          <attribute name="freeze_taxrateid" />
+          <attribute name="freeze_name" />
+          <attribute name="createdon" />
+          <order attribute="freeze_name" descending="false" />
+          <filter type="and">
+            <condition attribute="statecode" operator="eq" value="0" />
+          </filter>
+          <filter type="or" isquickfindfields="1">
+            <condition attribute="freeze_name" operator="like" value="{0}" />
+          </filter>
+          <attribute name="freeze_tax_percentage" />
+          <attribute name="freeze_effective_date" />
+          <attribute name="freeze_expiration_date" />
+          <attribute name="freeze_jurisdiction" />
+        </entity>
+      </fetch>
+    </fetchxml>
+    <IntroducedVersion>1.0.0.0</IntroducedVersion>
+    <LocalizedNames>
+      <LocalizedName description="Quick Find Active Tax Rates" languagecode="1033" />
+    </LocalizedNames>
+  </savedquery>
+</savedqueries>

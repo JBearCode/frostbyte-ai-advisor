@@ -1,0 +1,132 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<forms xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <systemform>
+    <formid>{ce18518d-2093-4294-9e0c-ca1a96aa9411}</formid>
+    <IntroducedVersion>1.0.0.0</IntroducedVersion>
+    <FormPresentation>1</FormPresentation>
+    <FormActivationState>1</FormActivationState>
+    <form>
+      <tabs>
+        <tab verticallayout="true" id="{6b5b71d6-4085-4df2-8a33-3eca41b11fbc}" IsUserDefined="1">
+          <labels>
+            <label description="General" languagecode="1033" />
+          </labels>
+          <columns>
+            <column width="100%">
+              <sections>
+                <section showlabel="false" showbar="false" IsUserDefined="0" id="{c838f9e0-9e8a-4801-9a78-5e2e68356dbf}">
+                  <labels>
+                    <label description="General" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell id="{73de971a-44e7-4d50-900a-bb8a497add89}">
+                        <labels>
+                          <label description="Tax Rate Name" languagecode="1033" />
+                        </labels>
+                        <control id="freeze_name" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="freeze_name" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{6e53567d-9c26-4a43-822f-565205e2c434}">
+                        <labels>
+                          <label description="Owner" languagecode="1033" />
+                        </labels>
+                        <control id="ownerid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="ownerid" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{00e563df-848c-4b96-ac30-d87cd628f545}" locklevel="0" rowspan="1" colspan="1">
+                        <labels>
+                          <label description="Tax Percentage" languagecode="1033" />
+                        </labels>
+                        <control id="freeze_tax_percentage" classid="{C3EFE0C3-0EC6-42BE-8349-CBD9079DFD8E}" datafieldname="freeze_tax_percentage" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{132d10de-6656-4069-98cb-65e564622c30}" locklevel="0" rowspan="1" colspan="1">
+                        <labels>
+                          <label description="Effective Date" languagecode="1033" />
+                        </labels>
+                        <control id="freeze_effective_date" classid="{5B773807-9FB2-42DB-97C3-7A91EFF8ADFF}" datafieldname="freeze_effective_date" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{dce88d56-3344-40bd-a390-43a9cf1f064c}" locklevel="0" rowspan="1" colspan="1">
+                        <labels>
+                          <label description="Expiration Date" languagecode="1033" />
+                        </labels>
+                        <control id="freeze_expiration_date" classid="{5B773807-9FB2-42DB-97C3-7A91EFF8ADFF}" datafieldname="freeze_expiration_date" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{843f562c-6f10-4543-a1b5-a685ba8725ba}" locklevel="0" rowspan="1" colspan="1">
+                        <labels>
+                          <label description="Jurisdiction" languagecode="1033" />
+                        </labels>
+                        <control id="freeze_jurisdiction" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="freeze_jurisdiction" disabled="false" />
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+              </sections>
+            </column>
+          </columns>
+        </tab>
+      </tabs>
+      <header id="{3e470bc6-9216-4022-9bc5-4c4f417dfe67}" celllabelposition="Top" columns="111" labelwidth="115" celllabelalignment="Left">
+        <rows>
+          <row>
+            <cell id="{062e3894-895b-4d7d-a0c8-0d8e4c390f3b}" showlabel="false">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{9cbad150-2a9c-4c0d-b463-a573e847a441}" showlabel="false">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{bb54de08-9f99-4a4e-9be9-c35af9f33c21}" showlabel="false">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+          </row>
+        </rows>
+      </header>
+      <footer id="{4d733bf3-c719-4ca8-9515-7a5197f317ad}" celllabelposition="Top" columns="111" labelwidth="115" celllabelalignment="Left">
+        <rows>
+          <row>
+            <cell id="{26576832-055b-493d-aedd-55402d67cec2}" showlabel="false">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{f6b3b5fb-1ea2-488a-bd91-7f03d2fdd771}" showlabel="false">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{a99c03e8-31af-4151-b057-52b86eb6ea37}" showlabel="false">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+          </row>
+        </rows>
+      </footer>
+      <DisplayConditions Order="0" FallbackForm="true">
+        <Everyone />
+      </DisplayConditions>
+    </form>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>1</CanBeDeleted>
+    <LocalizedNames>
+      <LocalizedName description="Information" languagecode="1033" />
+    </LocalizedNames>
+    <Descriptions>
+      <Description description="A form for this entity." languagecode="1033" />
+    </Descriptions>
+  </systemform>
+</forms>

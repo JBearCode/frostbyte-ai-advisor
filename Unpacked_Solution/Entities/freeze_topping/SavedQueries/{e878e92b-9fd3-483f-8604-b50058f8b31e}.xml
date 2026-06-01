@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<savedqueries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <savedquery>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>0</CanBeDeleted>
+    <isquickfindquery>1</isquickfindquery>
+    <isprivate>0</isprivate>
+    <isdefault>1</isdefault>
+    <savedqueryid>{e878e92b-9fd3-483f-8604-b50058f8b31e}</savedqueryid>
+    <layoutxml>
+      <grid name="resultset" jump="freeze_name" select="1" icon="1" preview="1">
+        <row name="result" id="freeze_toppingid">
+          <cell name="freeze_name" width="300" />
+          <cell name="createdon" width="125" />
+          <cell name="freeze_topping_code" width="120" />
+          <cell name="freeze_category" width="100" />
+          <cell name="freeze_is_premium" width="105" />
+        </row>
+      </grid>
+    </layoutxml>
+    <querytype>4</querytype>
+    <fetchxml>
+      <fetch version="1.0" mapping="logical">
+        <entity name="freeze_topping">
+          <attribute name="freeze_toppingid" />
+          <attribute name="freeze_name" />
+          <attribute name="createdon" />
+          <order attribute="freeze_name" descending="false" />
+          <filter type="and">
+            <condition attribute="statecode" operator="eq" value="0" />
+          </filter>
+          <filter type="or" isquickfindfields="1">
+            <condition attribute="freeze_name" operator="like" value="{0}" />
+          </filter>
+          <attribute name="freeze_topping_code" />
+          <attribute name="freeze_category" />
+          <attribute name="freeze_is_premium" />
+        </entity>
+      </fetch>
+    </fetchxml>
+    <IntroducedVersion>1.0.0.0</IntroducedVersion>
+    <LocalizedNames>
+      <LocalizedName description="Quick Find Active Toppings" languagecode="1033" />
+    </LocalizedNames>
+  </savedquery>
+</savedqueries>

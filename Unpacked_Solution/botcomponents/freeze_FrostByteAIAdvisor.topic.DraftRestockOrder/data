@@ -1,0 +1,13 @@
+kind: AdaptiveDialog
+modelDescription: This topic handles requests to draft a restock order, such as 'draft restock order', 'create order', 'new order', 'restock', etc.
+beginDialog:
+  kind: OnRecognizedIntent
+  id: main
+  intent: {}
+  actions:
+    - kind: BeginDialog
+      id: PkMKmJ
+      dialog: freeze_FrostByteAIAdvisor.InvokeConnectedAgentTaskAction.FrostByteOperator
+
+inputType: {}
+outputType: {}

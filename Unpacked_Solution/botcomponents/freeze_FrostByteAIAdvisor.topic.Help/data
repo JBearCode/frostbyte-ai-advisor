@@ -1,0 +1,38 @@
+kind: AdaptiveDialog
+modelDescription: This help topic handles questions like `help`, `what can you do`, `show me examples`, `what can I ask`, `show commands`, `menu`, `options`
+beginDialog:
+  kind: OnRecognizedIntent
+  id: main
+  intent: {}
+  actions:
+    - kind: SendActivity
+      id: sendActivity_XhbNNT
+      activity: |-
+        **FrostByte AI Advisor — Example Questions**
+
+        📊 **Sales Intelligence**
+
+        - "What were my top sellers last quarter?"
+        - "What's been selling best in the last 90 days?"
+        - "Show me sales trends"
+
+        🏷️ **Promotion Analysis**
+
+        - "How are my promotions performing?"
+        - "Should I extend the current promo?"
+        - "Which promotions are working?"
+
+        💰 **Pricing Scenarios**
+
+        - "Calculate price for a large specialty shake with 3 premium toppings"
+        - "What happens if I raise large prices 10%?"
+        - "Simulate a pricing change"
+
+        📈 **Demand Forecast**
+
+        - "Predict demand for premium flavors next month"
+        - "What should I order more of?"
+        - "Forecast seasonal demand"
+
+inputType: {}
+outputType: {}

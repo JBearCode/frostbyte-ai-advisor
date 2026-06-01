@@ -1,0 +1,59 @@
+kind: AdaptiveDialog
+beginDialog:
+  kind: OnRecognizedIntent
+  id: main
+  intent:
+    displayName: PromotionAnalysis
+    triggerQueries:
+      - how are my promos doing
+      - promotion performance
+      - evaluate promotions
+      - should I extend
+      - how are my promotions performing
+      - which promotions are working
+      - promo results
+      - promotion analysis
+
+  actions:
+    - kind: SendActivity
+      id: sendActivity_thinking01
+      activity: Let me pull your promotion metrics...
+
+    - kind: InvokeFlowAction
+      id: invokeFlowAction_xbJZVE
+      input: {}
+      output:
+        binding:
+          promometricsjson: Topic.promoMetricsJson
+
+      flowId: 2fde6103-6863-619d-0e59-831fcb976470
+
+    - kind: InvokeAIBuilderModelAction
+      id: invokeAIBuilderModelAction_H4KxYT
+      input:
+        binding:
+          promo_metrics: =Topic.promoMetricsJson
+
+      output:
+        binding:
+          predictionOutput: Topic.varPredictionOutput
+
+      aIModelId: 85600153-737f-4a4e-b14a-89cf6d206e3d
+
+    - kind: SendActivity
+      id: sendActivity_Qoxrzq
+      activity:
+        text:
+          - "{Topic.varPredictionOutput.text}"
+        quickReplies:
+          - kind: MessageBack
+            title: Which promotion had the best ROI?
+            text: Which promotion had the best ROI?
+
+          - kind: MessageBack
+            title: Extend a promotion
+            text: Extend a promotion
+
+          - kind: MessageBack
+            title: Forecast demand for the next month
+            text: Forecast demand for the next month

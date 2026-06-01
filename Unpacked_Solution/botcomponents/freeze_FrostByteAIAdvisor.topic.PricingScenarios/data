@@ -1,0 +1,88 @@
+kind: AdaptiveDialog
+modelDescription: "This topic handles pricing scenarios by answering questions like: \"what if I\", \"pricing scenario\", \"calculate price\", \"simulate pricing\", \"price calculator\", \"what would it cost\", \"how much does it cost\""
+beginDialog:
+  kind: OnRecognizedIntent
+  id: main
+  intent: {}
+  actions:
+    - kind: SendActivity
+      id: sendActivity_sGzFTa
+      activity: I can build a pricing scenario for any item on the menu!
+
+    - kind: Question
+      id: question_APi01u
+      displayName: Ask for an item
+      interruptionPolicy:
+        allowInterruption: true
+
+      variable: init:Topic.ItemRequest
+      prompt: "What item would you like to price? Describe it — for example: \"large specialty shake with vanilla\" or \"small cone with chocolate\""
+      entity: StringPrebuiltEntity
+
+    - kind: Question
+      id: question_3U2sdj
+      displayName: Ask for toppings
+      interruptionPolicy:
+        allowInterruption: true
+
+      variable: init:Topic.ToppingsRequest
+      prompt: Any toppings to add? List them by name separated by commas, or say none.
+      entity: StringPrebuiltEntity
+
+    - kind: Question
+      id: question_w7AvEE
+      displayName: Ask for price change
+      interruptionPolicy:
+        allowInterruption: true
+
+      variable: init:Topic.PriceChange
+      prompt: Are you testing a price change? Enter a number for the percentage (e.g., 10 for a +10% increase), or say no.
+      entity: StringPrebuiltEntity
+
+    - kind: SetVariable
+      id: setVariable_c7LxPX
+      variable: Topic.UserRequest
+      value: "=\"Item: \" & Topic.ItemRequest & \". Toppings: \" & Topic.ToppingsRequest & \". Price change: \" & Topic.PriceChange & \"%\""
+
+    - kind: SendActivity
+      id: sendActivity_HZom72
+      activity: Pulling current menu pricing from Dataverse...
+
+    - kind: InvokeFlowAction
+      id: invokeFlowAction_FLBIPb
+      input: {}
+      output:
+        binding:
+          menudatajson: Topic.menuDataJson
+
+      flowId: dfb1c48d-025a-f111-bec7-0022480afbf1
+
+    - kind: InvokeAIBuilderModelAction
+      id: invokeAIBuilderModelAction_HeUou7
+      input:
+        binding:
+          menu_data: =Topic.menuDataJson
+          user_request: =Topic.UserRequest
+
+      output:
+        binding:
+          predictionOutput: Topic.AIResponse
+
+      aIModelId: cd1c332a-78e3-4948-a57f-cb61c367ece4
+
+    - kind: SendActivity
+      id: sendActivity_hgJETF
+      activity:
+        text:
+          - "{Topic.AIResponse.text}"
+        quickReplies:
+          - kind: MessageBack
+            title: Evaluate my promotions
+            text: Evaluate my promotions
+
+          - kind: MessageBack
+            title: Forecast seasonal demand
+            text: Forecast seasonal demand
+
+inputType: {}
+outputType: {}

@@ -1,0 +1,10 @@
+<dvtablesearchentity dvtablesearchentityid="4ae92f5e-8b0b-4e5c-9217-2ecf7208f128">
+  <dvtablesearch>
+    <dvtablesearchid>d60e2145-d343-49cd-abde-d6e441c2a5a9</dvtablesearchid>
+  </dvtablesearch>
+  <entitylogicalname>freeze_itemtopping</entitylogicalname>
+  <iscustomizable>0</iscustomizable>
+  <name>freeze_itemtopping</name>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+</dvtablesearchentity>

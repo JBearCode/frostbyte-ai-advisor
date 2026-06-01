@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<savedqueries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <savedquery>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>0</CanBeDeleted>
+    <isquickfindquery>0</isquickfindquery>
+    <isprivate>0</isprivate>
+    <isdefault>1</isdefault>
+    <savedqueryid>{bfd45e33-4daa-4683-9d7d-f518b964c292}</savedqueryid>
+    <layoutxml>
+      <grid name="freeze_promotions" jump="freeze_name" select="1" icon="1" preview="0">
+        <row name="freeze_promotion" id="freeze_promotionid">
+          <cell name="freeze_name" width="300" />
+          <cell name="createdon" width="125" />
+          <cell name="freeze_discount_value" width="126" />
+          <cell name="freeze_end_date" width="100" />
+          <cell name="freeze_minimum_order_amount" width="182" />
+          <cell name="freeze_promotionid" width="100" />
+          <cell name="freeze_promotion_code" width="133" />
+          <cell name="freeze_start_date" width="100" />
+          <cell name="freeze_discount_type" width="122" />
+          <cell name="freeze_applicable_product_types" width="186" />
+        </row>
+      </grid>
+    </layoutxml>
+    <querytype>64</querytype>
+    <fetchxml>
+      <fetch version="1.0" mapping="logical">
+        <entity name="freeze_promotion">
+          <attribute name="freeze_promotionid" />
+          <attribute name="freeze_name" />
+          <attribute name="createdon" />
+          <filter type="and">
+            <condition attribute="statecode" operator="eq" value="0" />
+          </filter>
+          <attribute name="freeze_discount_value" />
+          <attribute name="freeze_end_date" />
+          <attribute name="freeze_minimum_order_amount" />
+          <attribute name="freeze_promotion_code" />
+          <attribute name="freeze_start_date" />
+          <attribute name="freeze_discount_type" />
+          <attribute name="freeze_applicable_product_types" />
+        </entity>
+      </fetch>
+    </fetchxml>
+    <IntroducedVersion>1.0.0.0</IntroducedVersion>
+    <LocalizedNames>
+      <LocalizedName description="Promotion Lookup View" languagecode="1033" />
+    </LocalizedNames>
+  </savedquery>
+</savedqueries>

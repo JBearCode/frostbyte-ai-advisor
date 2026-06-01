@@ -1,0 +1,259 @@
+kind: AdaptiveDialog
+startBehavior: CancelOtherTopics
+beginDialog:
+  kind: OnSystemRedirect
+  id: main
+  actions:
+    - kind: Question
+      id: 41d42054-d4cb-4e90-b922-2b16b37fe379
+      conversationOutcome: ResolvedImplied
+      alwaysPrompt: true
+      variable: init:Topic.SurveyResponse
+      prompt: Did that answer your question?
+      entity: BooleanPrebuiltEntity
+
+    - kind: ConditionGroup
+      id: condition-0
+      conditions:
+        - id: condition-0-item-0
+          condition: =Topic.SurveyResponse = true
+          actions:
+            - kind: CSATQuestion
+              id: csat_1
+              conversationOutcome: ResolvedConfirmed
+
+            - kind: AdaptiveCardPrompt
+              id: 6vn1zY
+              card: |-
+                {
+                  "$schema": "https://adaptivecards.io/schemas/adaptive-card.json",
+                  "type": "AdaptiveCard",
+                  "version": "1.5",
+                  "body": [
+                    {
+                      "type": "Container",
+                      "verticalContentAlignment": "Center",
+                      "items": [
+                        {
+                          "type": "ColumnSet",
+                          "columns": [
+                            {
+                              "type": "Column",
+                              "width": "auto",
+                              "items": [
+                                {
+                                  "type": "TextBlock",
+                                  "text": "❄️",
+                                  "size": "ExtraLarge"
+                                }
+                              ],
+                              "verticalContentAlignment": "Center"
+                            },
+                            {
+                              "type": "Column",
+                              "width": "stretch",
+                              "items": [
+                                {
+                                  "type": "TextBlock",
+                                  "text": "FrostByte AI Advisor",
+                                  "size": "ExtraLarge",
+                                  "weight": "Bolder",
+                                  "color": "Accent",
+                                  "wrap": true
+                                },
+                                {
+                                  "type": "TextBlock",
+                                  "text": "Help us improve your experience",
+                                  "size": "Medium",
+                                  "color": "Accent",
+                                  "wrap": true,
+                                  "spacing": "None"
+                                }
+                              ],
+                              "verticalContentAlignment": "Center"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "TextBlock",
+                      "text": "Share your feedback",
+                      "size": "Large",
+                      "weight": "Bolder",
+                      "color": "Accent",
+                      "spacing": "Medium",
+                      "wrap": true
+                    },
+                    {
+                      "type": "Input.ChoiceSet",
+                      "id": "feedbackReason",
+                      "label": "How would you rate your interaction with FrostByte AI today?",
+                      "style": "expanded",
+                      "choices": [
+                        {
+                          "title": "Excellent - The advisor was accurate and highly helpful",
+                          "value": "Excellent"
+                        },
+                        {
+                          "title": "Average - It answered my questions, but could be improved",
+                          "value": "Average"
+                        },
+                        {
+                          "title": "Poor - The AI didn't understand my prompts accurately",
+                          "value": "Poor Understanding"
+                        },
+                        {
+                          "title": "Technical Issues - I experienced errors or delays",
+                          "value": "Technical Issues"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "ColumnSet",
+                      "spacing": "Medium",
+                      "columns": [
+                        {
+                          "type": "Column",
+                          "width": "auto",
+                          "verticalContentAlignment": "Center",
+                          "items": [
+                            {
+                              "type": "RichTextBlock",
+                              "inlines": [
+                                {
+                                  "type": "TextRun",
+                                  "text": "Add a comment (Optional)",
+                                  "color": "Accent",
+                                  "selectAction": {
+                                    "type": "Action.ToggleVisibility",
+                                    "targetElements": [
+                                      "commentArea",
+                                      "chevronDown",
+                                      "chevronUp"
+                                    ]
+                                  }
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "Column",
+                          "width": "auto",
+                          "verticalContentAlignment": "Center",
+                          "spacing": "Small",
+                          "selectAction": {
+                            "type": "Action.ToggleVisibility",
+                            "targetElements": [
+                              "commentArea",
+                              "chevronDown",
+                              "chevronUp"
+                            ]
+                          },
+                          "items": [
+                            {
+                              "type": "Icon",
+                              "id": "chevronDown",
+                              "name": "ChevronDown",
+                              "size": "xxSmall",
+                              "color": "Accent"
+                            },
+                            {
+                              "type": "Icon",
+                              "id": "chevronUp",
+                              "name": "ChevronUp",
+                              "size": "xxSmall",
+                              "color": "Accent",
+                              "isVisible": false
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "Input.Text",
+                      "id": "commentArea",
+                      "isMultiline": true,
+                      "isVisible": false,
+                      "placeholder": "Tell us more about how FrostByte AI can be improved...",
+                      "spacing": "Small"
+                    },
+                    {
+                      "type": "ActionSet",
+                      "spacing": "Medium",
+                      "separator": true,
+                      "actions": [
+                        {
+                          "type": "Action.Submit",
+                          "title": "Submit Feedback",
+                          "style": "positive",
+                          "associatedInputs": "auto"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              output:
+                binding:
+                  actionSubmitId: Topic.actionSubmitId
+                  commentArea: Topic.commentArea
+                  feedbackReason: Topic.feedbackReason
+
+              outputType:
+                properties:
+                  actionSubmitId: String
+                  commentArea: String
+                  feedbackReason: String
+
+            - kind: SendActivity
+              id: sendMessage_8r29O0
+              activity: Thanks for your feedback.
+
+            - kind: Question
+              id: question_1
+              alwaysPrompt: true
+              variable: init:Topic.Continue
+              prompt: Can I help with anything else?
+              entity: BooleanPrebuiltEntity
+
+            - kind: ConditionGroup
+              id: condition-1
+              conditions:
+                - id: condition-1-item-0
+                  condition: =Topic.Continue = true
+                  actions:
+                    - kind: SendActivity
+                      id: sendMessage_4eOE6h
+                      activity: Go ahead. I'm listening.
+
+              elseActions:
+                - kind: SendActivity
+                  id: yHBz55
+                  activity: Ok, goodbye.
+
+                - kind: EndConversation
+                  id: jh1GMT
+
+      elseActions:
+        - kind: Question
+          id: PM68ot
+          alwaysPrompt: true
+          variable: init:Topic.TryAgain
+          prompt: Sorry I wasn't able to help better. Would you like to try again?
+          entity: BooleanPrebuiltEntity
+
+        - kind: ConditionGroup
+          id: KNxYBf
+          conditions:
+            - id: DPveFP
+              condition: =Topic.TryAgain = false
+              actions:
+                - kind: BeginDialog
+                  id: cngqi4
+                  dialog: freeze_FrostByteAIAdvisor.topic.Escalate
+
+          elseActions:
+            - kind: SendActivity
+              id: GrVHEW
+              activity: Go ahead. I'm listening.

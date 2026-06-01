@@ -1,0 +1,25 @@
+kind: AdaptiveDialog
+beginDialog:
+  kind: OnUnknownIntent
+  id: main
+  actions:
+    - kind: ConditionGroup
+      id: conditionGroup_LktzXw
+      conditions:
+        - id: conditionItem_tlGIVo
+          condition: =System.FallbackCount < 3
+          actions:
+            - kind: SendActivity
+              id: sendMessage_QZreqo
+              activity: |-
+                I didn't quite catch that. I'm FrostByte, your Brain Freeze AI advisor. Here's what I can do:
+                • \*\*Sales\*\* — "What are my top sellers?"
+                • \*\*Promotions\*\* — "How are my promos doing?"
+                • \*\*Pricing\*\* — "Simulate a price change"
+                • \*\*Forecast\*\* — "Predict demand for next month"
+                Try one of those, or type \*\*"help"\*\* for more examples.
+
+      elseActions:
+        - kind: BeginDialog
+          id: 5aXj5M
+          dialog: freeze_FrostByteAIAdvisor.topic.Escalate

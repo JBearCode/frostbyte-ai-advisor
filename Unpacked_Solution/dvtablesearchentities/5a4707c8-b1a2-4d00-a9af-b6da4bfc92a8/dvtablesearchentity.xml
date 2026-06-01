@@ -1,0 +1,10 @@
+<dvtablesearchentity dvtablesearchentityid="5a4707c8-b1a2-4d00-a9af-b6da4bfc92a8">
+  <dvtablesearch>
+    <dvtablesearchid>d60e2145-d343-49cd-abde-d6e441c2a5a9</dvtablesearchid>
+  </dvtablesearch>
+  <entitylogicalname>freeze_flavor</entitylogicalname>
+  <iscustomizable>0</iscustomizable>
+  <name>freeze_flavor</name>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+</dvtablesearchentity>

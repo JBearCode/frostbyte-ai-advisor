@@ -1,0 +1,11 @@
+<botcomponent schemaname="freeze_FrostByteAIAdvisor.topic.PromotionAnalysis.topic">
+  <componenttype>9</componenttype>
+  <description>Evaluates promotion performance and recommends whether to extend, modify, or end each promotion based on real order data.</description>
+  <iscustomizable>0</iscustomizable>
+  <name>PromotionAnalysis</name>
+  <parentbotid>
+    <schemaname>freeze_FrostByteAIAdvisor</schemaname>
+  </parentbotid>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+</botcomponent>

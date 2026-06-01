@@ -1,0 +1,11 @@
+<botcomponent schemaname="freeze_FrostByteAIAdvisor.topic.Topping_TaxRatePromotionProductOrderItemOrderItemToppingFlavor_fP1Pf">
+  <componenttype>16</componenttype>
+  <description>This knowledge source answers questions found in the following Dataverse items: Topping, Tax Rate, Promotion, Product, Order Item, Order, Item Topping, Flavor</description>
+  <iscustomizable>0</iscustomizable>
+  <name>Topping, Tax Rate, Promotion, Product, Order Item, Order, Item Topping, Flavor</name>
+  <parentbotid>
+    <schemaname>freeze_FrostByteAIAdvisor</schemaname>
+  </parentbotid>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+</botcomponent>

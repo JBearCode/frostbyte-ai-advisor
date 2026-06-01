@@ -1,0 +1,11 @@
+<botcomponent schemaname="freeze_FrostByteOperator.gpt.default">
+  <componenttype>15</componenttype>
+  <description>Privileged write agent for Brain Freeze Ice Cream. Performs Dataverse write operations on behalf of FrostByte AI Advisor using the Dataverse MCP server. Has write access; the parent analytical agent does not.</description>
+  <iscustomizable>0</iscustomizable>
+  <name>FrostByte Operator</name>
+  <parentbotid>
+    <schemaname>freeze_FrostByteOperator</schemaname>
+  </parentbotid>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+</botcomponent>

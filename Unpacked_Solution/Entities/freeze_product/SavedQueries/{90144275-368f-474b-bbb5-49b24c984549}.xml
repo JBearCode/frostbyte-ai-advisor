@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<savedqueries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <savedquery>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>0</CanBeDeleted>
+    <isquickfindquery>0</isquickfindquery>
+    <isprivate>0</isprivate>
+    <isdefault>1</isdefault>
+    <savedqueryid>{90144275-368f-474b-bbb5-49b24c984549}</savedqueryid>
+    <layoutxml>
+      <grid name="resultset" jump="freeze_name" select="1" icon="1" preview="1">
+        <row name="result" id="freeze_productid">
+          <cell name="freeze_name" width="300" />
+          <cell name="createdon" width="125" />
+          <cell name="freeze_is_active" width="100" />
+          <cell name="freeze_product_code" width="117" />
+          <cell name="freeze_product_type" width="115" />
+          <cell name="freeze_size" width="100" />
+          <cell name="freeze_base_price" width="100" />
+        </row>
+      </grid>
+    </layoutxml>
+    <querytype>0</querytype>
+    <fetchxml>
+      <fetch version="1.0" mapping="logical">
+        <entity name="freeze_product">
+          <attribute name="freeze_productid" />
+          <attribute name="freeze_name" />
+          <attribute name="createdon" />
+          <order attribute="freeze_name" descending="false" />
+          <filter type="and">
+            <condition attribute="statecode" operator="eq" value="0" />
+          </filter>
+          <attribute name="freeze_is_active" />
+          <attribute name="freeze_product_code" />
+          <attribute name="freeze_product_type" />
+          <attribute name="freeze_size" />
+          <attribute name="freeze_base_price" />
+        </entity>
+      </fetch>
+    </fetchxml>
+    <IntroducedVersion>1.0.0.0</IntroducedVersion>
+    <LocalizedNames>
+      <LocalizedName description="Active Products" languagecode="1033" />
+    </LocalizedNames>
+  </savedquery>
+</savedqueries>

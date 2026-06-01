@@ -1,0 +1,172 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<forms xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <systemform>
+    <formid>{1866db00-ed3f-4aab-b016-773903659320}</formid>
+    <IntroducedVersion>1.0.0.0</IntroducedVersion>
+    <FormPresentation>1</FormPresentation>
+    <FormActivationState>1</FormActivationState>
+    <form>
+      <tabs>
+        <tab verticallayout="true" id="{e72e32f6-bacf-45b5-a69b-f5a94c1ebb11}" IsUserDefined="1">
+          <labels>
+            <label description="General" languagecode="1033" />
+          </labels>
+          <columns>
+            <column width="100%">
+              <sections>
+                <section showlabel="false" showbar="false" IsUserDefined="0" id="{738162f6-d741-41b9-bc27-f63108b68161}">
+                  <labels>
+                    <label description="General" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell id="{e7074037-4226-4af8-ade4-39648f16fdef}">
+                        <labels>
+                          <label description="Order Item Name" languagecode="1033" />
+                        </labels>
+                        <control id="freeze_name" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="freeze_name" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{6e9f710e-e54a-42a4-9c1c-f602f22a7b59}">
+                        <labels>
+                          <label description="Owner" languagecode="1033" />
+                        </labels>
+                        <control id="ownerid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="ownerid" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{e56523f3-29e2-4729-98fa-573b36c06454}" locklevel="0" rowspan="1" colspan="1">
+                        <labels>
+                          <label description="Flavor" languagecode="1033" />
+                        </labels>
+                        <control id="freeze_flavor" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="freeze_flavor" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{23e23c6d-e2d5-4978-b8fc-8db74732650c}" locklevel="0" rowspan="1" colspan="1">
+                        <labels>
+                          <label description="Flavor Charge" languagecode="1033" />
+                        </labels>
+                        <control id="freeze_flavor_charge" classid="{533B9E00-756B-4312-95A0-DC888637AC78}" datafieldname="freeze_flavor_charge" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{baeb6b52-0755-459a-b05c-929798baf97e}" locklevel="0" rowspan="1" colspan="1">
+                        <labels>
+                          <label description="Item Subtotal" languagecode="1033" />
+                        </labels>
+                        <control id="freeze_item_subtotal" classid="{533B9E00-756B-4312-95A0-DC888637AC78}" datafieldname="freeze_item_subtotal" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{2660ee6b-8332-44d9-9572-1ec046418631}" locklevel="0" rowspan="1" colspan="1">
+                        <labels>
+                          <label description="Item Total" languagecode="1033" />
+                        </labels>
+                        <control id="freeze_item_total" classid="{533B9E00-756B-4312-95A0-DC888637AC78}" datafieldname="freeze_item_total" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{c1753dd7-d8e0-46f5-b804-70d0df69b040}" locklevel="0" rowspan="1" colspan="1">
+                        <labels>
+                          <label description="Order" languagecode="1033" />
+                        </labels>
+                        <control id="freeze_order" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="freeze_order" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{35bff2c4-af6a-468e-80c2-e7298bfb331f}" locklevel="0" rowspan="1" colspan="1">
+                        <labels>
+                          <label description="Product" languagecode="1033" />
+                        </labels>
+                        <control id="freeze_product" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="freeze_product" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{55f4b8ab-ca3e-4ae4-9180-0c01bfc3120a}" locklevel="0" rowspan="1" colspan="1">
+                        <labels>
+                          <label description="Quantity" languagecode="1033" />
+                        </labels>
+                        <control id="freeze_quantity" classid="{C6D124CA-7EDA-4A60-AEA9-7FB8D318B68F}" datafieldname="freeze_quantity" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{3b340338-33bf-4b9f-8cee-1e2b62953986}" locklevel="0" rowspan="1" colspan="1">
+                        <labels>
+                          <label description="Toppings Total" languagecode="1033" />
+                        </labels>
+                        <control id="freeze_toppings_total" classid="{533B9E00-756B-4312-95A0-DC888637AC78}" datafieldname="freeze_toppings_total" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{18fe0a95-2878-4dd0-ad83-ddd85a7ff75c}" locklevel="0" rowspan="1" colspan="1">
+                        <labels>
+                          <label description="Base Price" languagecode="1033" />
+                        </labels>
+                        <control id="freeze_base_price" classid="{533B9E00-756B-4312-95A0-DC888637AC78}" datafieldname="freeze_base_price" disabled="false" />
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+              </sections>
+            </column>
+          </columns>
+        </tab>
+      </tabs>
+      <header id="{6a7e19c4-48bf-4bf5-ba78-5e0e37a85367}" celllabelposition="Top" columns="111" labelwidth="115" celllabelalignment="Left">
+        <rows>
+          <row>
+            <cell id="{3d2dcf0e-ddcf-4403-8c3d-42c286ec1382}" showlabel="false">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{8fd7b713-cf99-418b-9cf1-7cc27ef566c7}" showlabel="false">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{530ecb69-14ec-4de1-911a-37dfbb3e2a3e}" showlabel="false">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+          </row>
+        </rows>
+      </header>
+      <footer id="{1d6e261d-2c84-456b-85cf-7bd9cfb3848b}" celllabelposition="Top" columns="111" labelwidth="115" celllabelalignment="Left">
+        <rows>
+          <row>
+            <cell id="{9e233f2e-01d8-4e81-a7fe-cf59164fe9e8}" showlabel="false">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{971675d6-867d-4989-bfb7-a32254e20e6a}" showlabel="false">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{4e8f4b62-6307-44e4-9dc3-72958b43af2d}" showlabel="false">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+          </row>
+        </rows>
+      </footer>
+      <DisplayConditions Order="0" FallbackForm="true">
+        <Everyone />
+      </DisplayConditions>
+    </form>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>1</CanBeDeleted>
+    <LocalizedNames>
+      <LocalizedName description="Information" languagecode="1033" />
+    </LocalizedNames>
+    <Descriptions>
+      <Description description="A form for this entity." languagecode="1033" />
+    </Descriptions>
+  </systemform>
+</forms>

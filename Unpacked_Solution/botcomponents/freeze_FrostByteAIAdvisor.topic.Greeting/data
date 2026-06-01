@@ -1,0 +1,53 @@
+kind: AdaptiveDialog
+beginDialog:
+  kind: OnRecognizedIntent
+  id: main
+  intent:
+    displayName: Greeting
+    includeInOnSelectIntent: false
+    triggerQueries:
+      - Good afternoon
+      - Good morning
+      - Hello
+      - Hey
+      - Hi
+      - hi
+      - hello
+      - what can you do
+
+  actions:
+    - kind: SendActivity
+      id: sendMessage_abmysR
+      activity:
+        text:
+          - |-
+            Hi — I'm FrostByte, your AI business advisor for Brain Freeze. I can:
+            - Analyze sales (top sellers, trends, forecasts)
+            - Evaluate promotion performance and suggest next steps
+            - Run pricing 'what-if' scenarios with tax included
+            - Forecast demand for the next month (seasonal + historical)
+
+            What would you like to look at? Type help for example questions.
+        quickReplies:
+          - kind: MessageBack
+            title: 📊 Analyze Sales
+            text: 📊 Analyze Sales
+
+          - kind: MessageBack
+            title: 🏷️ Evaluate Promotions
+            text: 🏷️ Evaluate Promotions
+
+          - kind: MessageBack
+            title: 💰 Pricing Scenarios
+            text: 💰 Pricing Scenarios
+
+          - kind: MessageBack
+            title: 📈 Demand Forecast
+            text: 📈 Demand Forecast
+
+          - kind: MessageBack
+            title: ❓ Help
+            text: ❓ Help
+
+    - kind: CancelAllDialogs
+      id: cancelAllDialogs_01At22

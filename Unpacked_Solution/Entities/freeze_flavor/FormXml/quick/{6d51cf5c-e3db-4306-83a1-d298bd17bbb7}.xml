@@ -1,0 +1,95 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<forms xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <systemform>
+    <formid>{6d51cf5c-e3db-4306-83a1-d298bd17bbb7}</formid>
+    <IntroducedVersion>1.0.0.0</IntroducedVersion>
+    <FormPresentation>1</FormPresentation>
+    <FormActivationState>1</FormActivationState>
+    <form>
+      <tabs>
+        <tab verticallayout="true" id="{ccf9ed5b-8f2f-4820-a037-ce42439c64ce}" IsUserDefined="1">
+          <labels>
+            <label description="" languagecode="1033" />
+          </labels>
+          <columns>
+            <column width="100%">
+              <sections>
+                <section showlabel="false" showbar="false" IsUserDefined="0" id="{4fd2c933-9004-4c8b-84db-210e73a864b1}">
+                  <labels>
+                    <label description="GENERAL" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell id="{2f29f635-292f-4b92-85d0-660e087ef7e6}">
+                        <labels>
+                          <label description="Flavor Name" languagecode="1033" />
+                        </labels>
+                        <control id="freeze_name" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="freeze_name" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{6508e153-a255-4acf-b30e-ec170aa3e6b1}">
+                        <labels>
+                          <label description="Owner" languagecode="1033" />
+                        </labels>
+                        <control id="ownerid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="ownerid" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{66c27006-1aba-4a3b-b787-4cfccb060599}" locklevel="0" rowspan="1" colspan="1">
+                        <labels>
+                          <label description="Is Available" languagecode="1033" />
+                        </labels>
+                        <control id="freeze_is_available" classid="{67FAC785-CD58-4F9F-ABB3-4B7DDC6ED5ED}" datafieldname="freeze_is_available" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{3618bf25-1daa-43ed-aa41-4407cc8ea72c}" locklevel="0" rowspan="1" colspan="1">
+                        <labels>
+                          <label description="Seasonal Start" languagecode="1033" />
+                        </labels>
+                        <control id="freeze_seasonal_start" classid="{5B773807-9FB2-42DB-97C3-7A91EFF8ADFF}" datafieldname="freeze_seasonal_start" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{4801aa7c-db27-4ef7-a300-894582adc0df}" locklevel="0" rowspan="1" colspan="1">
+                        <labels>
+                          <label description="Seasonal End" languagecode="1033" />
+                        </labels>
+                        <control id="freeze_seasonal_end" classid="{5B773807-9FB2-42DB-97C3-7A91EFF8ADFF}" datafieldname="freeze_seasonal_end" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{d64a4ec0-a844-4d3d-a116-b88675a38f2b}" locklevel="0" rowspan="1" colspan="1">
+                        <labels>
+                          <label description="Flavor Code" languagecode="1033" />
+                        </labels>
+                        <control id="freeze_flavor_code" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="freeze_flavor_code" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{0bc3402e-b357-493b-aab8-6ff546f102f6}" locklevel="0" rowspan="1" colspan="1">
+                        <labels>
+                          <label description="Category" languagecode="1033" />
+                        </labels>
+                        <control id="freeze_category" classid="{3EF39988-22BB-4F0B-BBBE-64B5A3748AEE}" datafieldname="freeze_category" disabled="false" />
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+              </sections>
+            </column>
+          </columns>
+        </tab>
+      </tabs>
+      <DisplayConditions Order="0" FallbackForm="true">
+        <Everyone />
+      </DisplayConditions>
+    </form>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>1</CanBeDeleted>
+    <LocalizedNames>
+      <LocalizedName description="Information" languagecode="1033" />
+    </LocalizedNames>
+  </systemform>
+</forms>

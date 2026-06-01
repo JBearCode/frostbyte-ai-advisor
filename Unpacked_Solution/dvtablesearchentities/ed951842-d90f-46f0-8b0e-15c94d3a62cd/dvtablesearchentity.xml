@@ -1,0 +1,10 @@
+<dvtablesearchentity dvtablesearchentityid="ed951842-d90f-46f0-8b0e-15c94d3a62cd">
+  <dvtablesearch>
+    <dvtablesearchid>d60e2145-d343-49cd-abde-d6e441c2a5a9</dvtablesearchid>
+  </dvtablesearch>
+  <entitylogicalname>freeze_order</entitylogicalname>
+  <iscustomizable>0</iscustomizable>
+  <name>freeze_order</name>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+</dvtablesearchentity>

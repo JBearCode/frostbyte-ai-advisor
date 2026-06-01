@@ -1,0 +1,8 @@
+kind: TaskDialog
+modelDisplayName: FrostByte Operator
+modelDescription: Privileged write agent for Brain Freeze Ice Cream. Performs Dataverse write operations on behalf of FrostByte AI Advisor using the Dataverse MCP server. Has write access; the parent analytical agent does not.
+action:
+  kind: InvokeConnectedAgentTaskAction
+  botSchemaName: freeze_FrostByteOperator
+  historyType:
+    kind: ConversationHistory

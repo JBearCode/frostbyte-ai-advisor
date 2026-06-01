@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<savedqueries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <savedquery>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>0</CanBeDeleted>
+    <isquickfindquery>0</isquickfindquery>
+    <isprivate>0</isprivate>
+    <isdefault>1</isdefault>
+    <savedqueryid>{76bcc545-f633-45a0-aa21-7d1a8070fc89}</savedqueryid>
+    <layoutxml>
+      <grid name="resultset" jump="freeze_name" select="1" icon="1" preview="1">
+        <row name="result" id="freeze_itemtoppingid">
+          <cell name="freeze_name" width="300" />
+          <cell name="createdon" width="125" />
+          <cell name="freeze_order_item" width="102" />
+          <cell name="freeze_quantity" width="100" />
+          <cell name="freeze_topping" width="100" />
+          <cell name="freeze_topping_price" width="119" />
+        </row>
+      </grid>
+    </layoutxml>
+    <querytype>1</querytype>
+    <fetchxml>
+      <fetch version="1.0" mapping="logical">
+        <entity name="freeze_itemtopping">
+          <attribute name="freeze_itemtoppingid" />
+          <attribute name="freeze_name" />
+          <attribute name="createdon" />
+          <order attribute="freeze_name" descending="false" />
+          <attribute name="freeze_order_item" />
+          <attribute name="freeze_quantity" />
+          <attribute name="freeze_topping" />
+          <attribute name="freeze_topping_price" />
+        </entity>
+      </fetch>
+    </fetchxml>
+    <IntroducedVersion>1.0.0.0</IntroducedVersion>
+    <LocalizedNames>
+      <LocalizedName description="Item Topping Advanced Find View" languagecode="1033" />
+    </LocalizedNames>
+  </savedquery>
+</savedqueries>

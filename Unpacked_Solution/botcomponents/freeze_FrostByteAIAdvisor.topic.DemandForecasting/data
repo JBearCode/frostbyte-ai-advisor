@@ -1,0 +1,46 @@
+kind: AdaptiveDialog
+modelDescription: This demand forecasting topic handles phrases such as "forecast", "predict demand", "what should I order more of", "demand forecast", "seasonal outlook", "what flavors should I stock up on"
+beginDialog:
+  kind: OnRecognizedIntent
+  id: main
+  intent: {}
+  actions:
+    - kind: SendActivity
+      id: sendActivity_7gDEh6
+      activity: Let me analyze your demand trends and seasonal outlook for the next month...
+
+    - kind: InvokeFlowAction
+      id: invokeFlowAction_4KjjRc
+      input: {}
+      output:
+        binding:
+          historyjson: Topic.historyJson
+          targetmonth: Topic.targetMonth
+
+      flowId: aa73bfd3-065a-f111-bec7-0022480afbf1
+
+    - kind: InvokeAIBuilderModelAction
+      id: invokeAIBuilderModelAction_eKlFQx
+      input:
+        binding:
+          history: =Topic.historyJson
+          target_month: =Topic.targetMonth
+
+      output:
+        binding:
+          predictionOutput: Topic.AIResponse
+
+      aIModelId: 2b22ad6b-6f0c-48a3-b7d0-0835f1a00226
+
+    - kind: SendActivity
+      id: sendActivity_YXl1IS
+      activity:
+        text:
+          - "{Topic.AIResponse.text}"
+        quickReplies:
+          - kind: MessageBack
+            title: 📦 Draft Restock Order
+            text: 📦 Draft Restock Order
+
+inputType: {}
+outputType: {}

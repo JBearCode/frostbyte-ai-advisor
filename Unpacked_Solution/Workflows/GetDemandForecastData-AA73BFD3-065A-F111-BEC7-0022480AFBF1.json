@@ -1,0 +1,150 @@
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_commondataserviceforapps": {
+        "api": {
+          "name": "shared_commondataserviceforapps"
+        },
+        "connection": {
+          "connectionReferenceLogicalName": "contoso_sharedcommondataserviceforapps_b204d"
+        },
+        "runtimeSource": "embedded"
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        },
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        }
+      },
+      "triggers": {
+        "manual": {
+          "type": "Request",
+          "kind": "Skills",
+          "inputs": {
+            "schema": {
+              "type": "object",
+              "properties": {},
+              "required": []
+            }
+          },
+          "metadata": {
+            "operationMetadataId": "b8f61c18-7224-4f8a-9c5f-72fbce5df764"
+          }
+        }
+      },
+      "actions": {
+        "Respond_to_the_agent": {
+          "type": "Response",
+          "kind": "Skills",
+          "inputs": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "historyjson": {
+                  "title": "historyJson",
+                  "description": "",
+                  "type": "string",
+                  "x-ms-content-hint": "TEXT",
+                  "x-ms-dynamically-added": true
+                },
+                "targetmonth": {
+                  "title": "targetMonth",
+                  "description": "",
+                  "type": "string",
+                  "x-ms-content-hint": "TEXT",
+                  "x-ms-dynamically-added": true
+                }
+              },
+              "additionalProperties": {}
+            },
+            "statusCode": 200,
+            "body": {
+              "historyjson": "@{string(outputs('Compose'))}",
+              "targetmonth": "@{variables('varTargetMonth')}"
+            }
+          },
+          "runAfter": {
+            "Compose": [
+              "SUCCEEDED"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "81c94f73-dd52-465c-ad3b-a4686da63cc3"
+          }
+        },
+        "Initialize_variable": {
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "varTargetMonth",
+                "type": "string",
+                "value": "@  formatDateTime(addToTime(utcNow(), 1, 'Month'), 'yyyy-MM')"
+              }
+            ]
+          },
+          "runAfter": {}
+        },
+        "List_rows": {
+          "type": "OpenApiConnection",
+          "inputs": {
+            "parameters": {
+              "entityName": "freeze_orderitems",
+              "fetchXml": "  <fetch aggregate=\"true\">\n    <entity name=\"freeze_orderitem\">\n      <attribute name=\"freeze_quantity\" alias=\"units\" aggregate=\"sum\" />\n      <link-entity name=\"freeze_order\" from=\"freeze_orderid\" to=\"freeze_order\" link-type=\"inner\">\n        <attribute name=\"freeze_orderyear\" alias=\"year\" groupby=\"true\" />\n        <attribute name=\"freeze_ordermonth\" alias=\"month\" groupby=\"true\" />\n        <filter>\n          <condition attribute=\"freeze_order_date\" operator=\"last-x-months\" value=\"24\" />\n        </filter>\n      </link-entity>\n      <link-entity name=\"freeze_flavor\" from=\"freeze_flavorid\" to=\"freeze_flavor\" link-type=\"inner\">\n        <attribute name=\"freeze_name\" alias=\"flavor_name\" groupby=\"true\" />\n        <attribute name=\"freeze_category\" alias=\"category\" groupby=\"true\" />\n      </link-entity>\n    </entity>\n  </fetch>"
+            },
+            "host": {
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps",
+              "operationId": "ListRecords",
+              "connectionName": "shared_commondataserviceforapps"
+            }
+          },
+          "runAfter": {
+            "Initialize_variable": [
+              "SUCCEEDED"
+            ]
+          }
+        },
+        "Compose": {
+          "type": "Compose",
+          "inputs": "@json(concat('{\"monthly_units\":', string(body('List_rows')?['value']), ',\"flavor_seasons\":', string(body('List_Flavors')?['value']), '}'))",
+          "runAfter": {
+            "List_Flavors": [
+              "SUCCEEDED"
+            ]
+          }
+        },
+        "List_Flavors": {
+          "type": "OpenApiConnection",
+          "inputs": {
+            "parameters": {
+              "entityName": "freeze_flavors",
+              "$select": "freeze_name,freeze_category,freeze_seasonal_start,freeze_seasonal_end"
+            },
+            "host": {
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps",
+              "operationId": "ListRecords",
+              "connectionName": "shared_commondataserviceforapps"
+            }
+          },
+          "runAfter": {
+            "List_rows": [
+              "SUCCEEDED"
+            ]
+          }
+        }
+      },
+      "outputs": {},
+      "description": "When an agent calls the flow and send back a response."
+    },
+    "templateName": null
+  },
+  "schemaVersion": "1.0.0.0"
+}

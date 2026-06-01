@@ -1,0 +1,13 @@
+kind: AdaptiveDialog
+modelDescription: This topic handles all requests to extend promotions, such as 'extend promotion', 'update promo', 'edit promotion', 'extend sale', etc.
+beginDialog:
+  kind: OnRecognizedIntent
+  id: main
+  intent: {}
+  actions:
+    - kind: BeginDialog
+      id: OMbFAW
+      dialog: freeze_FrostByteAIAdvisor.InvokeConnectedAgentTaskAction.FrostByteOperator
+
+inputType: {}
+outputType: {}

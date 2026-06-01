@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<savedqueries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <savedquery>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>0</CanBeDeleted>
+    <isquickfindquery>0</isquickfindquery>
+    <isprivate>0</isprivate>
+    <isdefault>1</isdefault>
+    <savedqueryid>{c66e055b-4afa-4e68-a97b-627974cd4ff2}</savedqueryid>
+    <layoutxml>
+      <grid name="resultset" jump="freeze_name" select="1" icon="1" preview="1">
+        <row name="result" id="freeze_taxrateid">
+          <cell name="freeze_name" width="250" />
+          <cell name="freeze_jurisdiction" width="200" />
+          <cell name="freeze_tax_percentage" width="125" />
+          <cell name="freeze_effective_date" width="125" />
+          <cell name="freeze_expiration_date" width="125" />
+        </row>
+      </grid>
+    </layoutxml>
+    <querytype>0</querytype>
+    <fetchxml>
+      <fetch version="1.0" mapping="logical">
+        <entity name="freeze_taxrate">
+          <attribute name="freeze_taxrateid" />
+          <attribute name="freeze_name" />
+          <attribute name="freeze_jurisdiction" />
+          <attribute name="freeze_tax_percentage" />
+          <attribute name="freeze_effective_date" />
+          <attribute name="freeze_expiration_date" />
+          <order attribute="freeze_jurisdiction" descending="false" />
+          <order attribute="freeze_effective_date" descending="true" />
+          <filter type="and">
+            <condition attribute="statecode" operator="eq" value="0" />
+          </filter>
+        </entity>
+      </fetch>
+    </fetchxml>
+    <IntroducedVersion>1.0.0.0</IntroducedVersion>
+  </savedquery>
+</savedqueries>

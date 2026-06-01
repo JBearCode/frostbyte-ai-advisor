@@ -1,0 +1,31 @@
+kind: AdaptiveDialog
+beginDialog:
+  kind: OnConversationStart
+  id: main
+  actions:
+    - kind: SendActivity
+      id: sendMessage_M0LuhV
+      activity:
+        text:
+          - Hello, I'm {System.Bot.Name}. How can I help?
+        speak:
+          - Hello and thank you for calling {System.Bot.Name}, powered by generative AI. How may I help you today?
+        quickReplies:
+          - kind: MessageBack
+            title: 📊 Analyze Sales
+            text: 📊 Analyze Sales
+
+          - kind: MessageBack
+            text: 🏷️ Evaluate Promotions
+
+          - kind: MessageBack
+            title: 💰 Pricing Scenarios
+            text: 💰 Pricing Scenarios
+
+          - kind: MessageBack
+            title: 📈 Demand Forecast
+            text: 📈 Demand Forecast
+
+          - kind: MessageBack
+            title: ❓ Help
+            text: ❓ Help

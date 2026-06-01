@@ -1,0 +1,11 @@
+<botcomponent schemaname="freeze_FrostByteAIAdvisor.topic.SalesIntelligence.topic">
+  <componenttype>9</componenttype>
+  <description>Analyzes top-selling products and sales trends using Dataverse order data for the last 90 days.</description>
+  <iscustomizable>0</iscustomizable>
+  <name>SalesIntelligence</name>
+  <parentbotid>
+    <schemaname>freeze_FrostByteAIAdvisor</schemaname>
+  </parentbotid>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+</botcomponent>

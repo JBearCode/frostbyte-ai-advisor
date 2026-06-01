@@ -1,0 +1,106 @@
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_commondataserviceforapps": {
+        "impersonation": {},
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "contoso_sharedcommondataserviceforapps_b204d"
+        },
+        "api": {
+          "name": "shared_commondataserviceforapps"
+        }
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        },
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        }
+      },
+      "triggers": {
+        "manual": {
+          "metadata": {
+            "operationMetadataId": "b8f61c18-7224-4f8a-9c5f-72fbce5df764"
+          },
+          "type": "Request",
+          "kind": "Skills",
+          "inputs": {
+            "schema": {
+              "type": "object",
+              "properties": {},
+              "required": []
+            }
+          }
+        }
+      },
+      "actions": {
+        "Respond_to_the_agent": {
+          "runAfter": {
+            "Compose": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "81c94f73-dd52-465c-ad3b-a4686da63cc3"
+          },
+          "type": "Response",
+          "kind": "Skills",
+          "inputs": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "salesjson": {
+                  "title": "salesJson",
+                  "description": "",
+                  "type": "string",
+                  "x-ms-content-hint": "TEXT",
+                  "x-ms-dynamically-added": true
+                }
+              },
+              "additionalProperties": {}
+            },
+            "statusCode": 200,
+            "body": {
+              "salesjson": "@{string(outputs('Compose'))}"
+            }
+          }
+        },
+        "List_rows": {
+          "runAfter": {},
+          "type": "OpenApiConnection",
+          "inputs": {
+            "parameters": {
+              "entityName": "freeze_orderitems",
+              "fetchXml": "<fetch top=\"10\" aggregate=\"true\">\n  <entity name=\"freeze_orderitem\">\n    <attribute name=\"freeze_product\" alias=\"product_id\" groupby=\"true\" />\n    <attribute name=\"freeze_item_total\" alias=\"revenue\" aggregate=\"sum\" />\n    <attribute name=\"freeze_quantity\" alias=\"units\" aggregate=\"sum\" />\n    <link-entity name=\"freeze_order\" from=\"freeze_orderid\" to=\"freeze_order\" link-type=\"inner\">\n      <filter>\n        <condition attribute=\"freeze_order_date\" operator=\"last-x-days\" value=\"90\" />\n      </filter>\n    </link-entity>\n    <link-entity name=\"freeze_product\" from=\"freeze_productid\" to=\"freeze_product\" link-type=\"inner\">\n      <attribute name=\"freeze_name\" alias=\"product_name\" groupby=\"true\" />\n    </link-entity>\n    <order alias=\"revenue\" descending=\"true\" />\n  </entity>\n</fetch>"
+            },
+            "host": {
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps",
+              "operationId": "ListRecords",
+              "connectionName": "shared_commondataserviceforapps"
+            }
+          }
+        },
+        "Compose": {
+          "runAfter": {
+            "List_rows": [
+              "Succeeded"
+            ]
+          },
+          "type": "Compose",
+          "inputs": "@body('List_rows')?['value']"
+        }
+      },
+      "outputs": {}
+    },
+    "templateName": null
+  },
+  "schemaVersion": "1.0.0.0"
+}

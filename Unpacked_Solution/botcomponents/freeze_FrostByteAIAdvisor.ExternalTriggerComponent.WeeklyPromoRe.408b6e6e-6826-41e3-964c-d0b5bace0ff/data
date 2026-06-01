@@ -1,0 +1,9 @@
+kind: ExternalTriggerConfiguration
+externalTriggerSource:
+  kind: WorkflowExternalTrigger
+  flowId: 89493899-d35b-f111-bec7-0022480afb68
+
+extensionData:
+  flowName: 289e1437-faaa-adc3-8f99-2b7c4293c0d9
+  flowUrl: /providers/Microsoft.ProcessSimple/environments/b5f0238d-f6d4-e3f5-ab5b-92e7f4403707/flows/289e1437-faaa-adc3-8f99-2b7c4293c0d9
+  triggerConnectionType: Schedule

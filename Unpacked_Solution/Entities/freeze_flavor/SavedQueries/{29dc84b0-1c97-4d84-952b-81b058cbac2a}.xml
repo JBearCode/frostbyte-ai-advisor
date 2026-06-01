@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<savedqueries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <savedquery>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>0</CanBeDeleted>
+    <isquickfindquery>0</isquickfindquery>
+    <isprivate>0</isprivate>
+    <isdefault>1</isdefault>
+    <savedqueryid>{29dc84b0-1c97-4d84-952b-81b058cbac2a}</savedqueryid>
+    <layoutxml>
+      <grid name="freeze_flavors" jump="freeze_name" select="1" icon="1" preview="0">
+        <row name="freeze_flavor" id="freeze_flavorid">
+          <cell name="freeze_name" width="300" />
+          <cell name="createdon" width="125" />
+          <cell name="freeze_is_available" width="107" />
+          <cell name="freeze_seasonal_start" width="120" />
+          <cell name="freeze_seasonal_end" width="116" />
+          <cell name="freeze_flavor_code" width="110" />
+          <cell name="freeze_category" width="100" />
+        </row>
+      </grid>
+    </layoutxml>
+    <querytype>64</querytype>
+    <fetchxml>
+      <fetch version="1.0" mapping="logical">
+        <entity name="freeze_flavor">
+          <attribute name="freeze_flavorid" />
+          <attribute name="freeze_name" />
+          <attribute name="createdon" />
+          <filter type="and">
+            <condition attribute="statecode" operator="eq" value="0" />
+          </filter>
+          <attribute name="freeze_is_available" />
+          <attribute name="freeze_seasonal_start" />
+          <attribute name="freeze_seasonal_end" />
+          <attribute name="freeze_flavor_code" />
+          <attribute name="freeze_category" />
+        </entity>
+      </fetch>
+    </fetchxml>
+    <IntroducedVersion>1.0.0.0</IntroducedVersion>
+    <LocalizedNames>
+      <LocalizedName description="Flavor Lookup View" languagecode="1033" />
+    </LocalizedNames>
+  </savedquery>
+</savedqueries>

@@ -1,0 +1,344 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ImportExportXml xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" OrganizationVersion="9.2.26044.164" OrganizationSchemaType="Standard" CRMServerServiceabilityVersion="9.2.26044.00164">
+  <Entities />
+  <Roles />
+  <Workflows />
+  <FieldSecurityProfiles />
+  <Templates />
+  <EntityMaps />
+  <EntityRelationships />
+  <OrganizationSettings />
+  <optionsets />
+  <WebResources />
+  <CustomControls />
+  <EntityDataProviders />
+  <AIModels>
+    <AIModel>
+      <msdyn_aimodelid>{2b22ad6b-6f0c-48a3-b7d0-0835f1a00226}</msdyn_aimodelid>
+      <msdyn_name>DemandForecaster</msdyn_name>
+      <msdyn_templateid>{edfdb190-3791-45d8-9a6c-8f90a37c278a}</msdyn_templateid>
+      <statecode>1</statecode>
+      <statuscode>1</statuscode>
+      <IsCustomizable>1</IsCustomizable>
+      <msdyn_activerunconfigurationid>{f644d418-2488-4072-a52c-aad517ac4fa5}</msdyn_activerunconfigurationid>
+      <AIConfigurations>
+        <AIConfiguration>
+          <msdyn_aiconfigurationid>{f644d418-2488-4072-a52c-aad517ac4fa5}</msdyn_aiconfigurationid>
+          <msdyn_customconfiguration>{"version":"GptDynamicPrompt-2","prompt":[{"type":"literal","text":"You are forecasting next-month demand for ice cream flavors based on historical orders.\n\nINPUT (JSON):\n  "},{"type":"inputVariable","id":"history"},{"type":"literal","text":"  = { flavor_name, monthly_units: [{year, month, units}], category, seasonal_start, seasonal_end }[]\n "},{"type":"inputVariable","id":"target_month"},{"type":"literal","text":"  = \"YYYY-MM\"\n\nFORMAT: \nFormat as nice readable markdown using markdown design principles. Do something to keep if visually nice, not like a wall of text. Use at least one emoji in the heading, and elsewhere (sparsely) as appropriate. Display the main results in a table.\n\nTASK: For each flavor in history, output:\n  - flavor\n  - predicted_units (integer)\n  - reason (one sentence citing prior-year same-month or trend)\n\nPRIORITY RULES:\n  • If target_month is within (seasonal_start, seasonal_end), confidence is at least MEDIUM.\n  • If target_month is outside the seasonal window for a Seasonal-category flavor, predicted_units is 0 with reason \"out of season\".\n  • If history has prior-year same-month data, use it as the primary anchor.\n  • If history is sparse (&lt; 3 data points), confidence is LOW.\n\nRULES:\n  • Use ONLY the numbers in the input.\n  • Never invent flavors not in the input."}],"definitions":{"inputs":[{"id":"history","text":"history","type":"text"},{"id":"target_month","text":"target_month","type":"text"}],"formulas":[],"data":[],"output":{"formats":["text"]}},"modelParameters":{"modelType":"gpt-41","gptParameters":{"temperature":0}},"settings":{"recordRetrievalLimit":30,"shouldPreserveRecordLinks":null,"runtime":null},"code":"","signature":""}</msdyn_customconfiguration>
+          <msdyn_majoriterationnumber>6</msdyn_majoriterationnumber>
+          <msdyn_minoriterationnumber>0</msdyn_minoriterationnumber>
+          <msdyn_name>2b22ad6b-6f0c-48a3-b7d0-0835f1a00226_5/28/2026 8:30:25 PM</msdyn_name>
+          <msdyn_modelrundataspecification>H4sIAAAAAAAACpWRywrCMBBFf0VmnY0gLrrzVXBjoYpbGe20DbRJSKZgEf/dVC0+0oWuz71nZpILbA2dYm1r5D1ZJ7WCaCxgrUzDqda8Uiy5hegCS+lMhe0Ga4IIQMCM2cpjw+Q6XErH2g4keyAgMez9WEGUY+VIwK41XWLrPaqAqwBGWxAfaq24DE0f9BcdZpl8ZBa+Q2cOnbMg8i5m27y8c3Q0nfT2q/cnDf/7TMNb7B6DgwNyqaQrU0LX/ct3K77T0RMHdb/iDdOrOszfAQAA</msdyn_modelrundataspecification>
+          <msdyn_type>190690001</msdyn_type>
+          <msdyn_aimodelid>{2b22ad6b-6f0c-48a3-b7d0-0835f1a00226}</msdyn_aimodelid>
+          <msdyn_trainedmodelaiconfigurationpareid>{382e5221-065a-f111-bec7-0022480afbf1}</msdyn_trainedmodelaiconfigurationpareid>
+          <statecode>2</statecode>
+          <statuscode>7</statuscode>
+          <IsCustomizable>1</IsCustomizable>
+          <msdyn_templateversion>1</msdyn_templateversion>
+        </AIConfiguration>
+        <AIConfiguration>
+          <msdyn_aiconfigurationid>{6c33b752-7b40-453b-b30c-69be59be8a6c}</msdyn_aiconfigurationid>
+          <msdyn_customconfiguration>{"version":"GptDynamicPrompt-2","prompt":[{"type":"literal","text":"You are forecasting next-month demand for ice cream flavors based on historical orders.\n\nINPUT (JSON):\n  "},{"type":"inputVariable","id":"history"},{"type":"literal","text":"  = { flavor_name, monthly_units: [{year, month, units}], category, seasonal_start, seasonal_end }[]\n "},{"type":"inputVariable","id":"target_month"},{"type":"literal","text":"  = \"YYYY-MM\"\n\n  OUTPUT FORMAT — respond with ONLY valid JSON, no prose, no markdown fences:\n  {\n    \"target_month\": \"&lt;YYYY-MM&gt;\",\n    \"flavors\": [\n      {\n        \"flavor\": \"&lt;flavor name&gt;\",\n        \"predicted_units\": &lt;integer&gt;,\n        \"confidence\": \"HIGH\",\n        \"reason\": \"&lt;one sentence&gt;\"\n      }\n    ]\n  }\n  RULES:\n  • confidence must be exactly one of: HIGH, MEDIUM, or LOW\n  • Seasonal flavors outside their window → predicted_units: 0, confidence: HIGH, reason: \"out of season\"\n  • Fewer than 3 historical data points → confidence: LOW\n  • Output ONLY the JSON. No text before or after it.\n\nTASK: For each flavor in history, output:\n  - flavor\n  - predicted_units (integer)\n  - reason (one sentence citing prior-year same-month or trend)\n\nPRIORITY RULES:\n  • If target_month is within (seasonal_start, seasonal_end), confidence is at least MEDIUM.\n  • If target_month is outside the seasonal window for a Seasonal-category flavor, predicted_units is 0 with reason \"out of season\".\n  • If history has prior-year same-month data, use it as the primary anchor.\n  • If history is sparse (&lt; 3 data points), confidence is LOW."}],"definitions":{"inputs":[{"id":"history","text":"history","type":"text"},{"id":"target_month","text":"target_month","type":"text"}],"formulas":[],"data":[],"output":{"formats":["json"],"jsonSchema":{"type":"object","properties":{"target_month":{"type":"string"},"flavors":{"type":"array"}}},"jsonExamples":[{"target_month":"","flavors":[]}]}},"modelParameters":{"modelType":"gpt-41","gptParameters":{"temperature":0}},"settings":{"recordRetrievalLimit":30,"shouldPreserveRecordLinks":null,"runtime":null},"code":"","signature":""}</msdyn_customconfiguration>
+          <msdyn_majoriterationnumber>7</msdyn_majoriterationnumber>
+          <msdyn_minoriterationnumber>0</msdyn_minoriterationnumber>
+          <msdyn_name>2b22ad6b-6f0c-48a3-b7d0-0835f1a00226_5/29/2026 7:27:40 PM</msdyn_name>
+          <msdyn_modelrundataspecification>H4sIAAAAAAAACpWSu27DMAxFf6XgrKVA0cGb+wjQpQaSoGvB2EyswpYEiipqBPn3SrGDPuTB0XovDy9JHWHjqF5Z7lHeiL22BopbBS/GBVlbK89GtAxQHOFJe9fh8Io9QQGgoBRhvQtCPsmt9mJ5xnkRFFROIh87KPbYeVKwHVxybCLHHOCkQJAPJO+9NdLmpD/qEhw2jR49j7GGviRnlpnlN1g4/HAf0NP93YV+ivwqyLVrmk+xHRtnA+y10b5dE/p0l/9Vq7N6M8kz5T7mryUwNWPShJhM1e6D6tRzefJrbpNP0uGn5TNo0kpmTL9iaYC48fF9A/QXdVK0AgAA</msdyn_modelrundataspecification>
+          <msdyn_type>190690001</msdyn_type>
+          <msdyn_aimodelid>{2b22ad6b-6f0c-48a3-b7d0-0835f1a00226}</msdyn_aimodelid>
+          <msdyn_trainedmodelaiconfigurationpareid>{382e5221-065a-f111-bec7-0022480afbf1}</msdyn_trainedmodelaiconfigurationpareid>
+          <statecode>2</statecode>
+          <statuscode>7</statuscode>
+          <IsCustomizable>1</IsCustomizable>
+          <msdyn_templateversion>1</msdyn_templateversion>
+        </AIConfiguration>
+        <AIConfiguration>
+          <msdyn_aiconfigurationid>{382e5221-065a-f111-bec7-0022480afbf1}</msdyn_aiconfigurationid>
+          <msdyn_majoriterationnumber>1</msdyn_majoriterationnumber>
+          <msdyn_minoriterationnumber>0</msdyn_minoriterationnumber>
+          <msdyn_modeldata>e26d6e24-051a-4c3a-adcf-a55d263774b4</msdyn_modeldata>
+          <msdyn_name>2b22ad6b-6f0c-48a3-b7d0-0835f1a00226_Training_5/27/2026 7:56:25 PM</msdyn_name>
+          <msdyn_modelrundataspecification>
+        {
+          "schemaVersion": 2,
+          "input": {},
+          "output": {}
+        }
+      </msdyn_modelrundataspecification>
+          <msdyn_type>190690000</msdyn_type>
+          <msdyn_aimodelid>{2b22ad6b-6f0c-48a3-b7d0-0835f1a00226}</msdyn_aimodelid>
+          <statecode>2</statecode>
+          <statuscode>6</statuscode>
+          <IsCustomizable>1</IsCustomizable>
+          <msdyn_templateversion>1</msdyn_templateversion>
+        </AIConfiguration>
+      </AIConfigurations>
+    </AIModel>
+    <AIModel>
+      <msdyn_aimodelid>{aa8c8df0-9111-4e30-b765-0e4b0545aae7}</msdyn_aimodelid>
+      <msdyn_name>SalesAnalyzer</msdyn_name>
+      <msdyn_templateid>{edfdb190-3791-45d8-9a6c-8f90a37c278a}</msdyn_templateid>
+      <statecode>1</statecode>
+      <statuscode>1</statuscode>
+      <IsCustomizable>1</IsCustomizable>
+      <msdyn_activerunconfigurationid>{6ac04192-7c0b-4d29-91f2-dcb4b41e560d}</msdyn_activerunconfigurationid>
+      <AIConfigurations>
+        <AIConfiguration>
+          <msdyn_aiconfigurationid>{6ac04192-7c0b-4d29-91f2-dcb4b41e560d}</msdyn_aiconfigurationid>
+          <msdyn_customconfiguration>{"version":"GptDynamicPrompt-2","prompt":[{"type":"literal","text":"You are an analyst summarizing real sales data from Brain Freeze ice cream shops.\n\n  INPUT (JSON): "},{"type":"inputVariable","id":"sales_rows"},{"type":"literal","text":" \n\n  TASK: Identify the top 3 products by revenue from the data above. For each, report:\n    - Product name\n    - Total revenue (sum across the period, USD)\n    - Units sold\n    - One sentence on what's driving its performance, based ONLY on signals visible in the data\n\nFORMAT: Respond in markdown.\n\n  Start with: ## 🍦 Top Sellers — Last 90 Days\n\n  Then one block per product, ranked 1–3:\n\n  **#[rank] [Product Name]**\n  Revenue: $[X] | Units sold: [X]\n  [One sentence on performance, based only on data signals.]\n\n  End with a **📌 Takeaway:** line summarizing overall trend.\n\n  RULES — strictly enforced:\n    • Use ONLY the numbers present in the input. Never estimate, extrapolate, or invent values.\n    • If a number is not in the data, write \"n/a\".\n    • Do not name products that do not appear in the input."}],"definitions":{"inputs":[{"id":"sales_rows","text":"sales_rows","type":"text"}],"formulas":[],"data":[],"output":{"formats":["text"]}},"modelParameters":{"modelType":"gpt-41-mini","gptParameters":{"temperature":0}},"settings":{"recordRetrievalLimit":30,"shouldPreserveRecordLinks":null,"runtime":null},"code":"","signature":""}</msdyn_customconfiguration>
+          <msdyn_majoriterationnumber>3</msdyn_majoriterationnumber>
+          <msdyn_minoriterationnumber>0</msdyn_minoriterationnumber>
+          <msdyn_name>aa8c8df0-9111-4e30-b765-0e4b0545aae7_5/27/2026 6:00:07 PM</msdyn_name>
+          <msdyn_modelrundataspecification>H4sIAAAAAAAACpWQvQrCQBCEX0W2vkYQi3T+BWwMRLGV1Wz0ILk7bjdokLy7iVEMno31zH4zs3fYOjrF1pcoe/KsrYForGBtXCWptbIyoqWG6A5Lza7AeoMlQQSgYCbi9bES4k5mLIgP3l45NA80BYmTNgULiHIsmBTsateZti3NnKFRgFmme8/CGqGbhMRZYBmCxVcf7hyZppM3vWn5SSX/rvvdYtcHBwNybTRfUkLu3vl9FT/V0UsOztuKD4n54QeWAQAA</msdyn_modelrundataspecification>
+          <msdyn_type>190690001</msdyn_type>
+          <msdyn_aimodelid>{aa8c8df0-9111-4e30-b765-0e4b0545aae7}</msdyn_aimodelid>
+          <msdyn_trainedmodelaiconfigurationpareid>{c9f5ecc9-1157-f111-bec7-0022480afbf1}</msdyn_trainedmodelaiconfigurationpareid>
+          <statecode>2</statecode>
+          <statuscode>7</statuscode>
+          <IsCustomizable>1</IsCustomizable>
+          <msdyn_templateversion>1</msdyn_templateversion>
+        </AIConfiguration>
+        <AIConfiguration>
+          <msdyn_aiconfigurationid>{56a5d1db-2105-4d57-b333-047e924827b8}</msdyn_aiconfigurationid>
+          <msdyn_customconfiguration>{"version":"GptDynamicPrompt-2","prompt":[{"type":"literal","text":"You are an analyst summarizing real sales data from Brain Freeze ice cream shops.\n\n  INPUT (JSON): "},{"type":"inputVariable","id":"sales_rows"},{"type":"literal","text":" \n\n  TASK: Identify the top 3 products by revenue from the data above. For each, report:\n    - Product name\n    - Total revenue (sum across the period, USD)\n    - Units sold\n    - One sentence on what's driving its performance, based ONLY on signals visible in the data\n\n  OUTPUT FORMAT — respond with ONLY valid JSON, no prose, no markdown fences:\n  {\n    \"summary\": \"&lt;one-sentence overall takeaway&gt;\",\n    \"top_products\": [\n      { \"rank\": 1, \"product\": \"&lt;product name&gt;\", \"revenue\": &lt;number&gt;, \"units\": &lt;integer&gt;, \"driver\": \"&lt;one sentence&gt;\" },\n      { \"rank\": 2, \"product\": \"&lt;product name&gt;\", \"revenue\": &lt;number&gt;, \"units\": &lt;integer&gt;, \"driver\": \"&lt;one sentence&gt;\" },\n      { \"rank\": 3, \"product\": \"&lt;product name&gt;\", \"revenue\": &lt;number&gt;, \"units\": &lt;integer&gt;, \"driver\": \"&lt;one sentence&gt;\" }\n    ]\n  }\n  RULES — strictly enforced:\n  • Use ONLY the numbers in the input. Never estimate, extrapolate, or invent values.\n  • Output ONLY the JSON object. No text before or after it.\n  • Do not name products that do not appear in the input.\n"}],"definitions":{"inputs":[{"id":"sales_rows","text":"sales_rows","type":"text"}],"formulas":[],"data":[],"output":{"formats":["json"],"jsonSchema":{"type":"object","properties":{"summary":{"type":"string"},"top_products":{"type":"array","items":{"type":"object","properties":{"rank":{"type":"number"},"product":{"type":"string"},"revenue":{"type":"number"},"units":{"type":"number"},"driver":{"type":"string"}},"required":["rank","product","revenue","units","driver"]}}}},"jsonExamples":[{"summary":"The top three products by revenue are driven by their high unit sales and consistent pricing across the period.","top_products":[{"rank":1,"product":"Vanilla Cone","revenue":12500,"units":500,"driver":"High unit sales of 500 cones at a steady price contribute to its leading revenue."},{"rank":2,"product":"Chocolate Sundae","revenue":9600,"units":320,"driver":"Strong demand with 320 units sold at a premium price drives its revenue."},{"rank":3,"product":"Strawberry Shake","revenue":7200,"units":240,"driver":"Consistent sales volume of 240 shakes at a moderate price supports its revenue."}]}]}},"modelParameters":{"modelType":"gpt-41-mini","gptParameters":{"temperature":0}},"settings":{"recordRetrievalLimit":30,"shouldPreserveRecordLinks":null,"runtime":null},"code":"","signature":""}</msdyn_customconfiguration>
+          <msdyn_majoriterationnumber>4</msdyn_majoriterationnumber>
+          <msdyn_minoriterationnumber>0</msdyn_minoriterationnumber>
+          <msdyn_name>aa8c8df0-9111-4e30-b765-0e4b0545aae7_5/29/2026 7:18:58 PM</msdyn_name>
+          <msdyn_modelrundataspecification>H4sIAAAAAAAACpWRS0/DMBCE/wracy5IiENu4VGJC5Haimu1TbZgSGxrvS5EVf87dh6l4ByojzufZ2btA6wsVQvDLcoLsVNGQ36dwZO2XpbGyKMWJR3kB3hQzjbYPWNLkANkUIiw2nohF2WHDbkNm0+XwmdaBqWVkIIN5DtsHGWw7myEVsFNv8IxA6xrNTD3Rgt9SepYJMi5sbD/8b1DR7c3k/sx+JdeLt1uvsV6CE4W2Cmt3NuS0MXn/Htr0atXozxz3YX+lXimemgaLUao3L5TFTP//y++bZFnyEmYKSDGbiybOrToPUagYMbukmxG/ZFi/fSUGp6hiZljXopPwkxPpj1pH2ZJxCgkKV6rYaXf/DBO6JrVnjjFx3nS6HS+ARQ5KXVXAwAA</msdyn_modelrundataspecification>
+          <msdyn_type>190690001</msdyn_type>
+          <msdyn_aimodelid>{aa8c8df0-9111-4e30-b765-0e4b0545aae7}</msdyn_aimodelid>
+          <msdyn_trainedmodelaiconfigurationpareid>{c9f5ecc9-1157-f111-bec7-0022480afbf1}</msdyn_trainedmodelaiconfigurationpareid>
+          <statecode>2</statecode>
+          <statuscode>7</statuscode>
+          <IsCustomizable>1</IsCustomizable>
+          <msdyn_templateversion>1</msdyn_templateversion>
+        </AIConfiguration>
+        <AIConfiguration>
+          <msdyn_aiconfigurationid>{c9f5ecc9-1157-f111-bec7-0022480afbf1}</msdyn_aiconfigurationid>
+          <msdyn_majoriterationnumber>1</msdyn_majoriterationnumber>
+          <msdyn_minoriterationnumber>0</msdyn_minoriterationnumber>
+          <msdyn_modeldata>c1e0537f-e6ba-4cd8-a296-87c2c1d5201d</msdyn_modeldata>
+          <msdyn_name>aa8c8df0-9111-4e30-b765-0e4b0545aae7_Training_5/24/2026 1:42:15 AM</msdyn_name>
+          <msdyn_modelrundataspecification>
+        {
+          "schemaVersion": 2,
+          "input": {},
+          "output": {}
+        }
+      </msdyn_modelrundataspecification>
+          <msdyn_type>190690000</msdyn_type>
+          <msdyn_aimodelid>{aa8c8df0-9111-4e30-b765-0e4b0545aae7}</msdyn_aimodelid>
+          <statecode>2</statecode>
+          <statuscode>6</statuscode>
+          <IsCustomizable>1</IsCustomizable>
+          <msdyn_templateversion>1</msdyn_templateversion>
+        </AIConfiguration>
+      </AIConfigurations>
+    </AIModel>
+    <AIModel>
+      <msdyn_aimodelid>{85600153-737f-4a4e-b14a-89cf6d206e3d}</msdyn_aimodelid>
+      <msdyn_name>PromoEvaluator</msdyn_name>
+      <msdyn_templateid>{edfdb190-3791-45d8-9a6c-8f90a37c278a}</msdyn_templateid>
+      <statecode>1</statecode>
+      <statuscode>1</statuscode>
+      <IsCustomizable>1</IsCustomizable>
+      <msdyn_activerunconfigurationid>{28921636-f59f-4e3e-bb61-b445c26026d4}</msdyn_activerunconfigurationid>
+      <AIConfigurations>
+        <AIConfiguration>
+          <msdyn_aiconfigurationid>{28921636-f59f-4e3e-bb61-b445c26026d4}</msdyn_aiconfigurationid>
+          <msdyn_customconfiguration>{"version":"GptDynamicPrompt-2","prompt":[{"type":"literal","text":"You are evaluating ice cream shop promotions.\n\nINPUT (JSON):  "},{"type":"inputVariable","id":"promo_metrics"},{"type":"literal","text":"  — array of { promo_name, promo_code, order_count, revenue, total_discount, start_date, end_date, status }\n\nTASK: For each promotion, recommend one of: EXTEND, MODIFY, END. Justify with the specific metric.\n\nFORMAT: Respond in markdown.\n\n  Start with: ## 📊 Promotion Performance Review\n\n  Then two sections:\n\n  ### ✅ Recommended to EXTEND\n  One bullet per promotion:\n  • **[Name]** ([Code]) — [orders] orders, $[revenue] revenue, [X]x rev/discount ratio\n\n  ### ⚠️  Recommended to MODIFY\n  One bullet per promotion:\n  • **[Name]** ([Code]) — [orders] orders, $[revenue] revenue — [one-phrase fix, e.g. \"reduce discount\" or \"boost marketing\"]\n\n  End with a **📌 Summary:** line: X promotions strong, Y need attention.\n\n  ---\n\nRULES:\n  • Recommendations must be supported by the input numbers; no speculation.\n  • If order_count is 0, recommend END unless the promotion has not yet started.\n  • If revenue &gt; 5x total_discount AND order_count &gt; 10, recommend EXTEND.\n  • Otherwise default to MODIFY and explain what to change."}],"definitions":{"inputs":[{"id":"promo_metrics","text":"promo_metrics","type":"text"}],"formulas":[],"data":[],"output":{"formats":["text"]}},"modelParameters":{"modelType":"gpt-41-mini","gptParameters":{"temperature":0}},"settings":{"recordRetrievalLimit":30,"shouldPreserveRecordLinks":null,"runtime":null},"code":"","signature":""}</msdyn_customconfiguration>
+          <msdyn_majoriterationnumber>3</msdyn_majoriterationnumber>
+          <msdyn_minoriterationnumber>0</msdyn_minoriterationnumber>
+          <msdyn_name>85600153-737f-4a4e-b14a-89cf6d206e3d_5/27/2026 5:59:10 PM</msdyn_name>
+          <msdyn_modelrundataspecification>H4sIAAAAAAAACpWQuQrCQBCGX0Wm3kYQi3TxCNgYSIKtrMlEF7IHuxMwhLy7G6N4rI3t/N98c/SQGywTbSWnA1ontIJozmCnTEuZ1rRVJKiDqIeNcKbh3Z5LhAiAQUxkxakldGNsrJb6KNHXShfynzGD1JCfxRuIat44ZFB0ZuRyD6gzDAx4VYmJWWtFeKVQGgfIu5hs+/KuuMPl4mkfvD9t6d8bf29RTIODA2qhhLtkyN341O+u5J7OHnHQ7le8AekZlvucAQAA</msdyn_modelrundataspecification>
+          <msdyn_type>190690001</msdyn_type>
+          <msdyn_aimodelid>{85600153-737f-4a4e-b14a-89cf6d206e3d}</msdyn_aimodelid>
+          <msdyn_trainedmodelaiconfigurationpareid>{03186af6-6a59-f111-bec7-0022480afbf1}</msdyn_trainedmodelaiconfigurationpareid>
+          <statecode>2</statecode>
+          <statuscode>7</statuscode>
+          <IsCustomizable>1</IsCustomizable>
+          <msdyn_templateversion>1</msdyn_templateversion>
+        </AIConfiguration>
+        <AIConfiguration>
+          <msdyn_aiconfigurationid>{97825147-e9a4-48ac-a180-9ff211ef9934}</msdyn_aiconfigurationid>
+          <msdyn_customconfiguration>{"version":"GptDynamicPrompt-2","prompt":[{"type":"literal","text":"You are evaluating ice cream shop promotions.\n\nINPUT (JSON):  "},{"type":"inputVariable","id":"promo_metrics"},{"type":"literal","text":"  — array of { promo_name, promo_code, order_count, revenue, total_discount, start_date, end_date, status }\n\nTASK: For each promotion, recommend one of: EXTEND, MODIFY, END. Justify with the specific metric.\n\nOUTPUT FORMAT — respond with ONLY valid JSON, no prose, no markdown fences:\n  {\n    \"promos\": [\n      {\n        \"name\": \"&lt;promotion name&gt;\",\n        \"code\": \"&lt;promo code&gt;\",\n        \"status\": \"active\",\n        \"recommendation\": \"EXTEND\",\n        \"justification\": \"&lt;one sentence citing exact numbers&gt;\",\n        \"order_count\": &lt;number&gt;,\n        \"revenue\": &lt;number&gt;,\n        \"total_discount\": &lt;number&gt;\n      } \n    ] \n  }\n  RULES:\n  • recommendation must be exactly one of: EXTEND, MODIFY, END\n  • If order_count is 0, recommend END unless the promo has not started yet\n  • If revenue &gt; 5x total_discount AND order_count &gt; 10, recommend EXTEND\n  • Otherwise recommend MODIFY\n  • Output ONLY the JSON. No text before or after it."}],"definitions":{"inputs":[{"id":"promo_metrics","text":"promo_metrics","type":"text"}],"formulas":[],"data":[],"output":{"formats":["json"],"jsonSchema":{"type":"object","properties":{"promos":{"type":"array"}}},"jsonExamples":[{"promos":[]}]}},"modelParameters":{"modelType":"gpt-41-mini","gptParameters":{"temperature":0}},"settings":{"recordRetrievalLimit":30,"shouldPreserveRecordLinks":null,"runtime":null},"code":"","signature":""}</msdyn_customconfiguration>
+          <msdyn_majoriterationnumber>4</msdyn_majoriterationnumber>
+          <msdyn_minoriterationnumber>0</msdyn_minoriterationnumber>
+          <msdyn_name>85600153-737f-4a4e-b14a-89cf6d206e3d_5/29/2026 7:22:37 PM</msdyn_name>
+          <msdyn_modelrundataspecification>H4sIAAAAAAAACpWRQYvCMBCF/4rMORdB9tBb1RX2YkHFq4ztuJulTUJmAhbxv5vYyurWS3MKeW++NzO5wNZRubK+QdmTZ20NZFMFX8YF2Vgrn0a0tJBdYKnZ1diusSHIABTkIl4fgxAn2Xnb2END8a3kof9VVlA4iVlYQ3bCmknBrnXJt40G8w1XBVhVuvMsrBE6yxCaDyzPYPHhjztHpo/Zg36N/CLI2Bnfd7HrggcDnLTR/LMh5LTU/1Wruzrp5TflHPsvJXiquk4TojcVx18qU+a437nfekTuPbYjCHFl3bkBXAcCzjICAAA=</msdyn_modelrundataspecification>
+          <msdyn_type>190690001</msdyn_type>
+          <msdyn_aimodelid>{85600153-737f-4a4e-b14a-89cf6d206e3d}</msdyn_aimodelid>
+          <msdyn_trainedmodelaiconfigurationpareid>{03186af6-6a59-f111-bec7-0022480afbf1}</msdyn_trainedmodelaiconfigurationpareid>
+          <statecode>2</statecode>
+          <statuscode>7</statuscode>
+          <IsCustomizable>1</IsCustomizable>
+          <msdyn_templateversion>1</msdyn_templateversion>
+        </AIConfiguration>
+        <AIConfiguration>
+          <msdyn_aiconfigurationid>{03186af6-6a59-f111-bec7-0022480afbf1}</msdyn_aiconfigurationid>
+          <msdyn_majoriterationnumber>1</msdyn_majoriterationnumber>
+          <msdyn_minoriterationnumber>0</msdyn_minoriterationnumber>
+          <msdyn_modeldata>62856c70-3132-4a1f-91f9-9fa4238d4dbc</msdyn_modeldata>
+          <msdyn_name>85600153-737f-4a4e-b14a-89cf6d206e3d_Training_5/27/2026 1:25:37 AM</msdyn_name>
+          <msdyn_modelrundataspecification>
+        {
+          "schemaVersion": 2,
+          "input": {},
+          "output": {}
+        }
+      </msdyn_modelrundataspecification>
+          <msdyn_type>190690000</msdyn_type>
+          <msdyn_aimodelid>{85600153-737f-4a4e-b14a-89cf6d206e3d}</msdyn_aimodelid>
+          <statecode>2</statecode>
+          <statuscode>6</statuscode>
+          <IsCustomizable>1</IsCustomizable>
+          <msdyn_templateversion>1</msdyn_templateversion>
+        </AIConfiguration>
+      </AIConfigurations>
+    </AIModel>
+    <AIModel>
+      <msdyn_aimodelid>{cd1c332a-78e3-4948-a57f-cb61c367ece4}</msdyn_aimodelid>
+      <msdyn_name>PricingInterpreter</msdyn_name>
+      <msdyn_templateid>{edfdb190-3791-45d8-9a6c-8f90a37c278a}</msdyn_templateid>
+      <statecode>1</statecode>
+      <statuscode>1</statuscode>
+      <IsCustomizable>1</IsCustomizable>
+      <msdyn_activerunconfigurationid>{adb518fc-513b-4af8-8467-72c0869cdc3e}</msdyn_activerunconfigurationid>
+      <AIConfigurations>
+        <AIConfiguration>
+          <msdyn_aiconfigurationid>{adb518fc-513b-4af8-8467-72c0869cdc3e}</msdyn_aiconfigurationid>
+          <msdyn_customconfiguration>{"version":"GptDynamicPrompt-2","prompt":[{"type":"literal","text":"You are a pricing analyst for a Brain Freeze ice cream shop.\n\nMENU DATA (JSON): "},{"type":"inputVariable","id":"menu_data"},{"type":"literal","text":" \n  Contains:\n    products: [{freeze_name, freeze_producttype, freeze_size, freeze_baseprice, freeze_isactive}]\n    flavors:  [{freeze_name, freeze_category, freeze_pricemodifier, freeze_isavailable}]\n    toppings: [{freeze_name, freeze_category, freeze_price, freeze_ispremium}]\n    tax_rate: {freeze_jurisdiction, freeze_taxpercentage}\n\nUSER REQUEST: "},{"type":"inputVariable","id":"user_request"},{"type":"literal","text":" \n  Format: \"Item: &lt;description&gt;. Toppings: &lt;list or none&gt;. Price change: &lt;% or no&gt;\"\n\nTASK:\n1. Match the user's item to the closest product in menu_data.products. State which product you matched (name, type, size).\n2. Match the user's flavor (if mentioned) to menu_data.flavors. If no flavor mentioned, use flavor_modifier = 0.\n3. Match the user's toppings to menu_data.toppings (by name). If \"none\", toppings_total = 0.\n4. Compute CURRENT PRICE:\n   - base_price = product.freeze_baseprice\n   - flavor_modifier = matched flavor's freeze_pricemodifier (0 if none)\n   - toppings_total = sum of matched topping freeze_price values\n   - subtotal = base_price + flavor_modifier + toppings_total\n   - tax = subtotal × (tax_rate.freeze_taxpercentage / 100)\n   - total = subtotal + tax\n5. If price_change is a number (not \"no\"): compute PROPOSED PRICE:\n   - proposed_subtotal = subtotal × (1 + price_change / 100)\n   - proposed_tax = proposed_subtotal × (tax_rate.freeze_taxpercentage / 100)\n   - proposed_total = proposed_subtotal + proposed_tax\n   - delta_total = proposed_total − total\n6. IMPACT: estimate revenue effect assuming 20–50 units sold per day at current price. Apply a stated elasticity assumption (e.g., \"assuming −0.8 price elasticity for a premium item\") and provide a 90-day revenue delta range (low/high).\n\nFORMAT:\n\n  RETURN MARKDOWN with the following format:\n\n  CURRENT PRICE\n    Base: $X.XX\n    Flavor modifier: $X.XX\n    Toppings: $X.XX  (list each topping and its price)\n    Subtotal: $X.XX\n    Tax (X%): $X.XX\n    TOTAL: $X.XX\n\n  PROPOSED PRICE  (if applicable)\n    New subtotal: $X.XX  (+$X.XX / +X%)\n    New tax: $X.XX\n    NEW TOTAL: $X.XX  (+$X.XX / +X%)\n\n  IMPACT  (if applicable)\n    Elasticity assumption: &lt;state clearly&gt;\n    Estimated 90-day revenue change: −$X,XXX to +$X,XXX  (low / high range)\n\nRULES:\n  • Use ONLY the prices from menu_data. Do not invent values.\n  • Show all arithmetic steps explicitly so the manager can verify them.\n  • If a requested item, flavor, or topping is not found in the data, say so and use the closest match.\n  • If price_change is \"no\" or 0, omit the PROPOSED PRICE and IMPACT sections entirely."}],"definitions":{"inputs":[{"id":"menu_data","text":"menu_data","type":"text"},{"id":"user_request","text":"user_request","type":"text"}],"formulas":[],"data":[],"output":{"formats":["text"]}},"modelParameters":{"modelType":"gpt-41","gptParameters":{"temperature":0}},"settings":{"recordRetrievalLimit":30,"shouldPreserveRecordLinks":null,"runtime":null},"code":"","signature":""}</msdyn_customconfiguration>
+          <msdyn_majoriterationnumber>1</msdyn_majoriterationnumber>
+          <msdyn_minoriterationnumber>0</msdyn_minoriterationnumber>
+          <msdyn_name>cd1c332a-78e3-4948-a57f-cb61c367ece4_5/27/2026 7:24:16 PM</msdyn_name>
+          <msdyn_modelrundataspecification>H4sIAAAAAAAACpWRuQrCQBCGX0Wm3kYQi3SeYGPABFsZzagLye66MwsG8d1NPPBYC62/f765TpA52kytr1CW5FlbA0lXwcy4IAtrZWJESw3JCcaaXYn1HCuCBEDBQMTrdRDiFldkwqpAwTj7RApSJ00PLCHZYsmkIK9dm8kal9nBWUFg8itPh0AsseuN/qLDotC3zMgaoeMX5yCKvIrFh6d3iEz93sN+bvxpkH9P9X2K/NY4WmCrjeb9gpDb33xWTa+0c8dReTPiBbm/hr3jAQAA</msdyn_modelrundataspecification>
+          <msdyn_type>190690001</msdyn_type>
+          <msdyn_aimodelid>{cd1c332a-78e3-4948-a57f-cb61c367ece4}</msdyn_aimodelid>
+          <msdyn_trainedmodelaiconfigurationpareid>{2d2047a3-015a-f111-bec7-0022480afbf1}</msdyn_trainedmodelaiconfigurationpareid>
+          <statecode>2</statecode>
+          <statuscode>7</statuscode>
+          <IsCustomizable>1</IsCustomizable>
+          <msdyn_templateversion>1</msdyn_templateversion>
+        </AIConfiguration>
+        <AIConfiguration>
+          <msdyn_aiconfigurationid>{0d727c5e-a93d-4970-b086-3c5caedee91d}</msdyn_aiconfigurationid>
+          <msdyn_customconfiguration>{"version":"GptDynamicPrompt-2","prompt":[{"type":"literal","text":"You are a pricing analyst for a Brain Freeze ice cream shop.\n\nMENU DATA (JSON): "},{"type":"inputVariable","id":"menu_data"},{"type":"literal","text":" \n  Contains:\n    products: [{freeze_name, freeze_producttype, freeze_size, freeze_baseprice, freeze_isactive}]\n    flavors:  [{freeze_name, freeze_category, freeze_pricemodifier, freeze_isavailable}]\n    toppings: [{freeze_name, freeze_category, freeze_price, freeze_ispremium}]\n    tax_rate: {freeze_jurisdiction, freeze_taxpercentage}\n\nUSER REQUEST: "},{"type":"inputVariable","id":"user_request"},{"type":"literal","text":" \n  Format: \"Item: &lt;description&gt;. Toppings: &lt;list or none&gt;. Price change: &lt;% or no&gt;\"\n\nTASK:\n1. Match the user's item to the closest product in menu_data.products. State which product you matched (name, type, size).\n2. Match the user's flavor (if mentioned) to menu_data.flavors. If no flavor mentioned, use flavor_modifier = 0.\n3. Match the user's toppings to menu_data.toppings (by name). If \"none\", toppings_total = 0.\n4. Compute CURRENT PRICE:\n   - base_price = product.freeze_baseprice\n   - flavor_modifier = matched flavor's freeze_pricemodifier (0 if none)\n   - toppings_total = sum of matched topping freeze_price values\n   - subtotal = base_price + flavor_modifier + toppings_total\n   - tax = subtotal × (tax_rate.freeze_taxpercentage / 100)\n   - total = subtotal + tax\n5. If price_change is a number (not \"no\"): compute PROPOSED PRICE:\n   - proposed_subtotal = subtotal × (1 + price_change / 100)\n   - proposed_tax = proposed_subtotal × (tax_rate.freeze_taxpercentage / 100)\n   - proposed_total = proposed_subtotal + proposed_tax\n   - delta_total = proposed_total − total\n6. IMPACT: estimate revenue effect assuming 20–50 units sold per day at current price. Apply a stated elasticity assumption (e.g., \"assuming −0.8 price elasticity for a premium item\") and provide a 90-day revenue delta range (low/high).\n\nOUTPUT FORMAT — respond with ONLY valid JSON, no prose, no markdown fences:\n  {\n    \"matched_product\": \"&lt;name, type, size&gt;\",\n    \"current_price\": {\n      \"base\": &lt;number&gt;,\n      \"flavor_modifier\": &lt;number&gt;,\n      \"toppings\": [{ \"name\": \"&lt;topping name&gt;\", \"price\": &lt;number&gt; }],\n      \"toppings_total\": &lt;number&gt;,\n      \"subtotal\": &lt;number&gt;,\n      \"tax_rate_pct\": &lt;number&gt;,\n      \"tax_amount\": &lt;number&gt;,\n      \"total\": &lt;number&gt;\n    },\n    \"proposed_price\": {\n      \"subtotal\": &lt;number&gt;, \"tax_amount\": &lt;number&gt;, \"total\": &lt;number&gt;,\n      \"delta_total\": &lt;number&gt;, \"delta_pct\": &lt;number&gt;\n    },\n    \"impact\": {\n      \"elasticity\": \"&lt;stated assumption&gt;\",\n      \"revenue_low\": &lt;number&gt;,\n      \"revenue_high\": &lt;number&gt;\n    }\n  }\n  Set proposed_price and impact to null if price_change is \"no\" or 0.\n  RULES: Use ONLY prices from menu_data. Output ONLY the JSON. No text before or after."}],"definitions":{"inputs":[{"id":"menu_data","text":"menu_data","type":"text"},{"id":"user_request","text":"user_request","type":"text"}],"formulas":[],"data":[],"output":{"formats":["json"],"jsonSchema":{"type":"object","properties":{"matched_product":{"type":"string"},"current_price":{"type":"object","properties":{"base":{"type":"number"},"flavor_modifier":{"type":"number"},"toppings":{"type":"array","items":{"type":"object","properties":{"name":{"type":"string"},"price":{"type":"number"}},"required":["name","price"]}},"toppings_total":{"type":"number"},"subtotal":{"type":"number"},"tax_rate_pct":{"type":"number"},"tax_amount":{"type":"number"},"total":{"type":"number"}}},"proposed_price":{"type":"object","properties":{"subtotal":{"type":"number"},"tax_amount":{"type":"number"},"total":{"type":"number"},"delta_total":{"type":"number"},"delta_pct":{"type":"number"}}},"impact":{"type":"object","properties":{"elasticity":{"type":"string"},"revenue_low":{"type":"number"},"revenue_high":{"type":"number"}}}}},"jsonExamples":[{"matched_product":"Vanilla Freeze, Ice Cream, Medium","current_price":{"base":4.5,"flavor_modifier":0.5,"toppings":[{"name":"Chocolate Chips","price":0.75},{"name":"Sprinkles","price":0.5}],"toppings_total":1.25,"subtotal":6.25,"tax_rate_pct":8.25,"tax_amount":0.515625,"total":6.765625},"proposed_price":{"subtotal":6.875,"tax_amount":0.5671875,"total":7.4421875,"delta_total":0.6765625,"delta_pct":9.999999999999998},"impact":{"elasticity":"assuming −0.8 price elasticity for a premium item","revenue_low":10920,"revenue_high":27300}}]}},"modelParameters":{"modelType":"gpt-41","gptParameters":{"temperature":0}},"settings":{"recordRetrievalLimit":30,"shouldPreserveRecordLinks":null,"runtime":null},"code":"","signature":""}</msdyn_customconfiguration>
+          <msdyn_majoriterationnumber>2</msdyn_majoriterationnumber>
+          <msdyn_minoriterationnumber>0</msdyn_minoriterationnumber>
+          <msdyn_name>cd1c332a-78e3-4948-a57f-cb61c367ece4_5/29/2026 7:26:27 PM</msdyn_name>
+          <msdyn_modelrundataspecification>H4sIAAAAAAAACrVVyW7CMBD9lcrnXCpVPeRGF6ReigSo12hIBnCV2K49piDEv9dxwhY7EovK0W+ZmTcTsWUThflQ6groC7XhUrD0MWEfQlkaS0nvgjhtWLplb9yoEjafUCFLGUvYgEjzmSU0NVyhsFkBBCH3CCVspMjVgJKlcygNJmy6UTVn4rzEgu0SZg3qTOOPRUOh1xl6iR0UBW84r1IQriOeg4ByakzaHn1fwODz09595/xHlq6NKt7FtCkcDDDngpvlGMHUu+mqhh59aOGI3Lj+c7Iai6bT2qIljWbfmNc1L18yUL7EIlNaFs41suoOIdJQbrVGQY7Cc7yrm5lbRkjzr4e6LpjSp1jCSuqskgWfc9ShrEsIHEgq5UbwlVtooDVsrulY+Pcuzb9GkjokdE5vnjv9+Vvct5iRpPp0u8oOHoxo7KxHeUDCWGCdaSDMVOweztCoFippRY+yxSKr6Bkv0qEPxp2jksbf5b1Hd2tG/z1nwgosCfpWfwr2KKMLPEKxXHmloFHdnCeWYIjnUfIJFvk8NK7cHwtmpfwNpadgMO8eXPLFsl/q0XDq5vcHneQq2zkHAAA=</msdyn_modelrundataspecification>
+          <msdyn_type>190690001</msdyn_type>
+          <msdyn_aimodelid>{cd1c332a-78e3-4948-a57f-cb61c367ece4}</msdyn_aimodelid>
+          <msdyn_trainedmodelaiconfigurationpareid>{2d2047a3-015a-f111-bec7-0022480afbf1}</msdyn_trainedmodelaiconfigurationpareid>
+          <statecode>2</statecode>
+          <statuscode>7</statuscode>
+          <IsCustomizable>1</IsCustomizable>
+          <msdyn_templateversion>1</msdyn_templateversion>
+        </AIConfiguration>
+        <AIConfiguration>
+          <msdyn_aiconfigurationid>{2d2047a3-015a-f111-bec7-0022480afbf1}</msdyn_aiconfigurationid>
+          <msdyn_majoriterationnumber>1</msdyn_majoriterationnumber>
+          <msdyn_minoriterationnumber>0</msdyn_minoriterationnumber>
+          <msdyn_modeldata>52e429be-5357-4a43-ad0a-fd78c7ea95e2</msdyn_modeldata>
+          <msdyn_name>cd1c332a-78e3-4948-a57f-cb61c367ece4_Training_5/27/2026 7:24:14 PM</msdyn_name>
+          <msdyn_modelrundataspecification>
+        {
+          "schemaVersion": 2,
+          "input": {},
+          "output": {}
+        }
+      </msdyn_modelrundataspecification>
+          <msdyn_type>190690000</msdyn_type>
+          <msdyn_aimodelid>{cd1c332a-78e3-4948-a57f-cb61c367ece4}</msdyn_aimodelid>
+          <statecode>2</statecode>
+          <statuscode>6</statuscode>
+          <IsCustomizable>1</IsCustomizable>
+          <msdyn_templateversion>1</msdyn_templateversion>
+        </AIConfiguration>
+      </AIConfigurations>
+    </AIModel>
+    <AIModel>
+      <msdyn_aimodelid>{02fb0711-7c3a-48e9-9ee5-fff8ee01f027}</msdyn_aimodelid>
+      <msdyn_name>Process Competitor Flyer</msdyn_name>
+      <msdyn_templateid>{edfdb190-3791-45d8-9a6c-8f90a37c278a}</msdyn_templateid>
+      <statecode>1</statecode>
+      <statuscode>1</statuscode>
+      <IsCustomizable>1</IsCustomizable>
+      <msdyn_activerunconfigurationid>{32bb3f65-4780-4823-9640-95c17f463c5c}</msdyn_activerunconfigurationid>
+      <AIConfigurations>
+        <AIConfiguration>
+          <msdyn_aiconfigurationid>{32bb3f65-4780-4823-9640-95c17f463c5c}</msdyn_aiconfigurationid>
+          <msdyn_customconfiguration>{"version":"GptDynamicPrompt-2","prompt":[{"type":"literal","text":"You are given:\n- An uploaded competitor flyer document: "},{"type":"inputVariable","id":"FlyerFile"},{"type":"literal","text":" \n- Direct access to the Dataverse table: freeze_promosuggestion "},{"type":"data","id":"freeze_promosuggestion.freeze_airationale","text":"Promo Suggestion.AI Rationale"},{"type":"data","id":"freeze_promosuggestion.freeze_approvalstatus","text":"Promo Suggestion.Approval Status"},{"type":"data","id":"freeze_promosuggestion.freeze_competitorend","text":"Promo Suggestion.Competitor End"},{"type":"data","id":"freeze_promosuggestion.freeze_competitorname","text":"Promo Suggestion.Competitor Name"},{"type":"data","id":"freeze_promosuggestion.freeze_competitorpromodetails","text":"Promo Suggestion.Competitor Promo Details"},{"type":"data","id":"freeze_promosuggestion.freeze_competitorstart","text":"Promo Suggestion.Competitor Start"},{"type":"data","id":"freeze_promosuggestion.freeze_name","text":"Promo Suggestion.Name"},{"type":"data","id":"freeze_promosuggestion.freeze_promosuggestionid","text":"Promo Suggestion.Promo Suggestion"},{"type":"literal","text":" \n\nYour tasks:\n1. Analyze the FlyerFile to extract the competitor's name and promotional details.\n2. Devise a creative counter-promotion and write a short rationale.\n3. Automatically write and execute a Python script inside the secure code interpreter sandbox to insert a new row into the freeze_promosuggestion table with these exact mappings:\n   - freeze_name: \"Response to [Insert Extracted Competitor Name]\"\n   - freeze_suggestedpromotitle: [Your suggested counter-promotion title]\n   - freeze_suggestedpromodetails: [Your suggested counter-promotion details]\n   - freeze_airationale: [Your rationale, strictly keeping it under 100 characters]\n   - freeze_approvalstatus: 240390000 (Set to the integer value for the \"Created\" status)\n   - freeze_reviewercomments: null (This should be left blank/null on initial creation)\n   - freeze_sourcedocumentlink: [SourceDocumentLink]\n   - freeze_competitorname: [Extracted competitor name]\n   - freeze_competitorpromodetails: [Extracted competitor details]\n   - freeze_competitorstart: [ISO 8601 format \"YYYY-MM-DD\" if extracted, otherwise null]\n   - freeze_competitorend: [ISO 8601 format \"YYYY-MM-DD\" if extracted, otherwise null]\n\nEnsure that dates are correctly formatted or written as null to avoid API database write errors."}],"definitions":{"inputs":[{"id":"FlyerFile","text":"FlyerFile","type":"document"}],"formulas":[],"data":[{"id":"freeze_promosuggestion","displayName":"Promo Suggestion","type":"dataverseTable","filters":[]}],"output":{"formats":["text"]}},"modelParameters":{"modelType":"gpt-41-mini","gptParameters":{"temperature":0}},"settings":{"recordRetrievalLimit":30,"shouldPreserveRecordLinks":null,"runtime":"codeinterpreter","enableExtendedExecution":false},"code":"\nimport logging\nimport io\nimport re\nimport datetime\nfrom typing import Optional\n\nimport pdfminer.high_level\nimport pdfminer.layout\nfrom workerinterfaces import ExecutorInterface, ConnectorClient, HttpMethod, ExecutionResult, read_multiple_files_from_input\n\nclass PromptExecutor(ExecutorInterface):\n    async def execute(self, logger: logging.Logger, connector_client: ConnectorClient, input: dict) -&gt; ExecutionResult:\n        logger.info(\"Starting execution of Promo Suggestion creation from competitor flyer.\")\n        \n        # Read FlyerFile from inputs\n        message_id = input.get(\"RequestId\", \"\")\n        flyer_files = read_multiple_files_from_input(input, message_id, [\"FlyerFile\"])\n        flyer_file = flyer_files.get(\"FlyerFile\")\n\n        if flyer_file is None:\n            msg = \"FlyerFile input is missing or could not be read.\"\n            logger.error(msg)\n            return ExecutionResult(status_code=400, headers={}, body={\"text\": msg})\n\n        # Extract text from PDF flyer if possible\n        flyer_text = \"\"\n        try:\n            if isinstance(flyer_file, io.BytesIO):\n                # Use pdfminer to extract text from in-memory PDF file\n                flyer_file.seek(0)\n                laparams = pdfminer.layout.LAParams()\n                flyer_text = pdfminer.high_level.extract_text(flyer_file, laparams=laparams)\n                logger.info(\"Extracted text from FlyerFile using pdfminer.\")\n            elif isinstance(flyer_file, str):\n                # It's a path - try to open and extract text\n                with open(flyer_file, \"rb\") as f:\n                    laparams = pdfminer.layout.LAParams()\n                    flyer_text = pdfminer.high_level.extract_text(f, laparams=laparams)\n                logger.info(f\"Extracted text from FlyerFile at path {flyer_file}.\")\n            else:\n                logger.warning(\"FlyerFile format not recognized for text extraction.\")\n        except Exception as e:\n            logger.error(f\"Error extracting text from FlyerFile: {e}\")\n            flyer_text = \"\"\n\n        if not flyer_text:\n            msg = \"No text could be extracted from the flyer document. Unable to proceed.\"\n            logger.error(msg)\n            return ExecutionResult(status_code=400, headers={}, body={\"text\": msg})\n\n        # Sanitize extracted text to prevent injection or control chars\n        flyer_text = \"\".join(ch for ch in flyer_text if ch.isprintable() or ch in \"\\r\\n\\t \")\n\n        logger.info(f\"Flyer text extracted (first 500 chars): {flyer_text[:500]}\")\n\n        # Heuristic extraction:\n        # Extract competitor name - try to find a competitor name phrase or the first line with a name-like pattern.\n        # For example, search for lines containing \"competitor\" or use the first non-empty line\n        lines = [line.strip() for line in flyer_text.splitlines() if line.strip()]\n        competitor_name = None\n        competitor_promo_details = None\n\n        # Attempt to find competitor name by looking for keyword \"competitor\" context or by heuristics\n        # If not found, fallback to first line\n        candidate_lines = []\n        for line in lines:\n            if re.search(r\"\\bcompetitor\\b\", line, re.I):\n                candidate_lines.append(line)\n        if candidate_lines:\n            competitor_name = candidate_lines[0]\n        else:\n            competitor_name = lines[0] if lines else \"Unknown Competitor\"\n        competitor_name = competitor_name[:100]  # Limit length\n\n        logger.info(f\"Extracted competitor name: {competitor_name}\")\n\n        # Extract promo details - take first several lines after competitor name or any large text block detected\n        # Attempt to find promotional details near competitor_name line\n        # Aggregate lines following competitor name until empty line or max limit\n        try:\n            start_index = lines.index(competitor_name)\n        except ValueError:\n            start_index = 0\n        promo_lines = []\n        for line in lines[start_index + 1 : start_index + 20]:\n            if not line.strip():\n                break\n            promo_lines.append(line)\n        competitor_promo_details = \" \".join(promo_lines)\n        if not competitor_promo_details:\n            competitor_promo_details = flyer_text[:300]  # fallback first 300 chars from text\n        competitor_promo_details = competitor_promo_details[:1000]  # limit length\n\n        logger.info(f\"Extracted competitor promo details (first 200 chars): {competitor_promo_details[:200]}\")\n\n        # Extract competitor promo dates - search for date patterns (YYYY-MM-DD, MM/DD/YYYY, or Month Day Year)\n        # We try to parse start and end dates from the flyer text\n        def find_date(text: str) -&gt; Optional[str]:\n            # Try common ISO pattern first\n            iso_match = re.search(r\"(\\d{4}-\\d{2}-\\d{2})\", text)\n            if iso_match:\n                return iso_match.group(1)\n            # Try MM/DD/YYYY or M/D/YYYY pattern\n            mdys = re.findall(r'(\\b\\d{1,2}[/-]\\d{1,2}[/-]\\d{4}\\b)', text)\n            for dt in mdys:\n                try:\n                    dt_parsed = datetime.datetime.strptime(dt, \"%m/%d/%Y\")\n                    iso_str = dt_parsed.date().isoformat()\n                    return iso_str\n                except Exception:\n                    try:\n                        dt_parsed = datetime.datetime.strptime(dt, \"%m-%d-%Y\")\n                        iso_str = dt_parsed.date().isoformat()\n                        return iso_str\n                    except Exception:\n                        continue\n            # Try Month Day, Year like January 1, 2023\n            month_day_year = re.findall(\n                r'([Jj]anuary|[Ff]ebruary|[Mm]arch|[Aa]pril|[Mm]ay|[Jj]une|[Jj]uly|[Aa]ugust|[Ss]eptember|[Oo]ctober|[Nn]ovember|[Dd]ecember) \\d{1,2}, \\d{4}',\n                text,\n            )\n            if month_day_year:\n                try:\n                    dt_parsed = datetime.datetime.strptime(month_day_year[0], \"%B %d, %Y\")\n                    return dt_parsed.date().isoformat()\n                except Exception:\n                    pass\n            return None\n\n        # Search flyer text around competitor promo details for dates\n        combined_search_text = competitor_promo_details + \" \" + competitor_name\n\n        competitor_start_date = find_date(combined_search_text)\n        competitor_end_date = None\n\n        # Try to find end date near \"to\" or \"end\" keywords (simple heuristic)\n        end_date_match = re.search(\n            r'(?:to|until|through|thru)\\s+(\\d{4}-\\d{2}-\\d{2}|\\d{1,2}[/-]\\d{1,2}[/-]\\d{4}|[A-Za-z]+ \\d{1,2}, \\d{4})',\n            flyer_text,\n            re.I,\n        )\n        if end_date_match:\n            end_date_raw = end_date_match.group(1)\n            competitor_end_date = find_date(end_date_raw)\n\n        logger.info(f\"Extracted competitor start date: {competitor_start_date}\")\n        logger.info(f\"Extracted competitor end date: {competitor_end_date}\")\n\n        # Simple creative counter-promotion generation - heuristic only\n        suggested_title = f\"Beat {competitor_name} Promo\"\n        suggested_details = f\"Our exclusive offer surpasses {competitor_name}'s deal. Don't miss out!\"\n        rationale = f\"Countering {competitor_name} promo to increase market share.\"\n        # Truncate rationale to 100 characters max\n        rationale = rationale[:100]\n\n        # Prepare payload for Dataverse\n        entity_set_name = \"freeze_promosuggestions\"\n        data = {\n            \"freeze_name\": f\"Response to {competitor_name}\",\n            \"freeze_suggestedpromotitle\": suggested_title,\n            \"freeze_suggestedpromodetails\": suggested_details,\n            \"freeze_airationale\": rationale,\n            \"freeze_approvalstatus\": 240390000,  # Created status value\n            \"freeze_reviewercomments\": None,\n            \"freeze_sourcedocumentlink\": \"FlyerFile\",  # Can set to the input key or implement a proper link if available\n            \"freeze_competitorname\": competitor_name,\n            \"freeze_competitorpromodetails\": competitor_promo_details,\n            \"freeze_competitorstart\": competitor_start_date,\n            \"freeze_competitorend\": competitor_end_date,\n        }\n\n        logger.info(f\"Data payload for Dataverse create: {data}\")\n\n        # Make POST request to create new freeze_promosuggestion record\n        path = f\"/api/data/v9.2/{entity_set_name}\"\n        try:\n            response = await connector_client.make_request(\n                connector_name=\"dataverse\",\n                method=HttpMethod.POST,\n                path=path,\n                content_type=\"application/json\",\n                body=data,\n            )\n            logger.info(f\"Dataverse create record response status: {response.status_code}\")\n            if response.status_code in [200, 201, 204]:\n                entity_id_header = response.headers.get(\"OData-EntityId\")\n                if entity_id_header:\n                    match = re.search(r\"\\(([^)]+)\\)\", entity_id_header)\n                    record_id = match.group(1) if match else \"Unknown ID\"\n                    logger.info(f\"New freeze_promosuggestion record created with id: {record_id}\")\n                    output_text = (\n                        f\"Successfully created new promo suggestion with ID: {record_id}\\n\\n\"\n                        f\"Competitor: {competitor_name}\\n\"\n                        f\"Suggested Title: {suggested_title}\\n\"\n                        f\"Rationale (&lt;=100 chars): {rationale}\"\n                    )\n                else:\n                    output_text = (\n                        \"Successfully created new promo suggestion record, but could not retrieve the record ID.\"\n                    )\n            else:\n                output_text = f\"Failed to create promo suggestion, response code: {response.status_code}\"\n                logger.error(output_text)\n        except Exception as e:\n            output_text = f\"Exception during Dataverse record creation: {e}\"\n            logger.error(output_text)\n\n        return ExecutionResult(\n            status_code=200,\n            headers={},\n            body={\"text\": output_text}\n        )\n","signature":"AQAAAK4AAADvu797Ikdlb2dyYXBoeSI6InVzIiwiRW52aXJvbm1lbnQiOiJwcm9kIiwiQ2x1c3RlcklkIjoid3VzIiwiS2V5VmVyc2lvbiI6IjhiNGY0MGMwOTRlMjRmYmVhMWE1NTdkNDZiZDYwNmU4IiwiU2lnbmF0dXJlVmVyc2lvbiI6InYxIiwiU2lnbmF0dXJlRGF0ZUJpbmFyeSI6NTI1MDg0Mzg1MDY3NTM0MzU4OX0gAAAA41EL+U8eWuPkJuuTNR8L9e8docgmfQCbPgq8ziGwJVA="}</msdyn_customconfiguration>
+          <msdyn_majoriterationnumber>1</msdyn_majoriterationnumber>
+          <msdyn_minoriterationnumber>0</msdyn_minoriterationnumber>
+          <msdyn_name>02fb0711-7c3a-48e9-9ee5-fff8ee01f027_5/31/2026 12:13:44 AM</msdyn_name>
+          <msdyn_modelrundataspecification>H4sIAAAAAAAACpWRSwvCMBCE/4rsORdBPPTmq+BFwdd926waSZOQbMEi/nfT+oRW0JwSZjLfZnKBtaM8tb5A3pEPyhpI+gLmxpW8spZnhhVXkFxgqoLTWC2wIEgABIyYvcpKplDLqa7Ip0pTp3dTuXq3zE6Uczz/HJthoOFgZnIrSbb9b6qApeM4PmpI9qgDvaDjJmIdU80BrnEJQCnV3TyxhunM7eRRy/JJYF9+B0Rjyf/21z3F5g5+gJ4IAXtlVDiuCEP9Ya1WGrX3kDuuS2Tchq5Cp1HpNdLX5340eQPxztVNPwIAAA==</msdyn_modelrundataspecification>
+          <msdyn_type>190690001</msdyn_type>
+          <msdyn_aimodelid>{02fb0711-7c3a-48e9-9ee5-fff8ee01f027}</msdyn_aimodelid>
+          <msdyn_trainedmodelaiconfigurationpareid>{6359a587-855c-f111-a826-0022480afbf1}</msdyn_trainedmodelaiconfigurationpareid>
+          <statecode>2</statecode>
+          <statuscode>7</statuscode>
+          <IsCustomizable>1</IsCustomizable>
+          <msdyn_templateversion>1</msdyn_templateversion>
+        </AIConfiguration>
+        <AIConfiguration>
+          <msdyn_aiconfigurationid>{6359a587-855c-f111-a826-0022480afbf1}</msdyn_aiconfigurationid>
+          <msdyn_majoriterationnumber>1</msdyn_majoriterationnumber>
+          <msdyn_minoriterationnumber>0</msdyn_minoriterationnumber>
+          <msdyn_modeldata>c9cf0171-0864-40ba-b913-a903022b713c</msdyn_modeldata>
+          <msdyn_name>02fb0711-7c3a-48e9-9ee5-fff8ee01f027_Training_5/31/2026 12:13:25 AM</msdyn_name>
+          <msdyn_modelrundataspecification>
+        {
+          "schemaVersion": 2,
+          "input": {},
+          "output": {}
+        }
+      </msdyn_modelrundataspecification>
+          <msdyn_type>190690000</msdyn_type>
+          <msdyn_aimodelid>{02fb0711-7c3a-48e9-9ee5-fff8ee01f027}</msdyn_aimodelid>
+          <statecode>2</statecode>
+          <statuscode>6</statuscode>
+          <IsCustomizable>1</IsCustomizable>
+          <msdyn_templateversion>1</msdyn_templateversion>
+        </AIConfiguration>
+      </AIConfigurations>
+    </AIModel>
+  </AIModels>
+  <connectionreferences>
+    <connectionreference connectionreferencelogicalname="contoso_sharedcommondataserviceforapps_b204d">
+      <connectionreferencedisplayname>Microsoft Dataverse PermitManagement-b204d</connectionreferencedisplayname>
+      <connectorid>/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps</connectorid>
+      <iscustomizable>1</iscustomizable>
+      <promptingbehavior>0</promptingbehavior>
+      <statecode>0</statecode>
+      <statuscode>1</statuscode>
+    </connectionreference>
+    <connectionreference connectionreferencelogicalname="cts_contosoHelpdeskAgent.shared_sharepointonline.17da651fa6414094beb99dc31931df56">
+      <connectionreferencedisplayname>cts_contosoHelpdeskAgent.shared_sharepointonline.17da651fa6414094beb99dc31931df56</connectionreferencedisplayname>
+      <connectorid>/providers/Microsoft.PowerApps/apis/shared_sharepointonline</connectorid>
+      <iscustomizable>0</iscustomizable>
+      <promptingbehavior>0</promptingbehavior>
+      <statecode>0</statecode>
+      <statuscode>1</statuscode>
+    </connectionreference>
+    <connectionreference connectionreferencelogicalname="cts_sharedmicrosoftcopilotstudio_6e4c8">
+      <connectionreferencedisplayname>Microsoft Copilot Studio ContosoHelpdeskAgent-6e4c8</connectionreferencedisplayname>
+      <connectorid>/providers/Microsoft.PowerApps/apis/shared_microsoftcopilotstudio</connectorid>
+      <iscustomizable>1</iscustomizable>
+      <promptingbehavior>0</promptingbehavior>
+      <statecode>0</statecode>
+      <statuscode>1</statuscode>
+    </connectionreference>
+    <connectionreference connectionreferencelogicalname="freeze_FrostByteOperator.shared_commondataserviceforapps.shared-commondataser-65e06ffe-20e8-4456-bb11-852dde0ef505">
+      <connectionreferencedisplayname>freeze_FrostByteOperator.shared_commondataserviceforapps.shared-commondataser-65e06ffe-20e8-4456-bb11-852dde0ef505</connectionreferencedisplayname>
+      <connectorid>/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps</connectorid>
+      <iscustomizable>0</iscustomizable>
+      <promptingbehavior>0</promptingbehavior>
+      <statecode>0</statecode>
+      <statuscode>1</statuscode>
+    </connectionreference>
+  </connectionreferences>
+  <Languages>
+    <Language>1033</Language>
+  </Languages>
+</ImportExportXml>

@@ -1,0 +1,11 @@
+<botcomponent schemaname="freeze_FrostByteAIAdvisor.gpt.default">
+  <componenttype>15</componenttype>
+  <description>AI-powered business advisor for ice cream franchise owners. Analyzes sales, promotions, and pricing using real Brain Freeze data.</description>
+  <iscustomizable>0</iscustomizable>
+  <name>FrostByte AI Advisor</name>
+  <parentbotid>
+    <schemaname>freeze_FrostByteAIAdvisor</schemaname>
+  </parentbotid>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+</botcomponent>

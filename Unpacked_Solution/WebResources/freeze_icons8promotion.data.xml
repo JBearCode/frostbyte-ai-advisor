@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<WebResource xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <WebResourceId>{74684ce7-da55-f111-bec7-0022480afbf1}</WebResourceId>
+  <Name>freeze_icons8promotion</Name>
+  <DisplayName>icons8-promotion</DisplayName>
+  <WebResourceType>11</WebResourceType>
+  <IntroducedVersion>1.0.0.0</IntroducedVersion>
+  <IsEnabledForMobileClient>0</IsEnabledForMobileClient>
+  <IsAvailableForMobileOffline>0</IsAvailableForMobileOffline>
+  <IsCustomizable>1</IsCustomizable>
+  <CanBeDeleted>1</CanBeDeleted>
+  <IsHidden>0</IsHidden>
+  <FileName>/WebResources/freeze_icons8promotion74684CE7-DA55-F111-BEC7-0022480AFBF1</FileName>
+</WebResource>

@@ -1,0 +1,10 @@
+<botcomponent schemaname="freeze_FrostByteAIAdvisor.action.ProcessCompetitorFlyer">
+  <componenttype>9</componenttype>
+  <iscustomizable>0</iscustomizable>
+  <name>Process Competitor Flyer</name>
+  <parentbotid>
+    <schemaname>freeze_FrostByteAIAdvisor</schemaname>
+  </parentbotid>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+</botcomponent>

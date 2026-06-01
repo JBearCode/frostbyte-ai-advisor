@@ -1,0 +1,8 @@
+<botcomponent_connectionreferenceset>
+  <botcomponent_connectionreference botcomponentid.schemaname="freeze_FrostByteOperator.action.MicrosoftDataverse-MicrosoftDataverseMCPServerPreview" connectionreferenceid.connectionreferencelogicalname="freeze_FrostByteOperator.shared_commondataserviceforapps.shared-commondataser-65e06ffe-20e8-4456-bb11-852dde0ef505">
+    <iscustomizable>1</iscustomizable>
+  </botcomponent_connectionreference>
+  <botcomponent_connectionreference botcomponentid.schemaname="freeze_FrostByteOperator.action.MicrosoftDataverse-MicrosoftDataverseMCPServerPreview_Dq0" connectionreferenceid.connectionreferencelogicalname="freeze_FrostByteOperator.shared_commondataserviceforapps.shared-commondataser-65e06ffe-20e8-4456-bb11-852dde0ef505">
+    <iscustomizable>1</iscustomizable>
+  </botcomponent_connectionreference>
+</botcomponent_connectionreferenceset>

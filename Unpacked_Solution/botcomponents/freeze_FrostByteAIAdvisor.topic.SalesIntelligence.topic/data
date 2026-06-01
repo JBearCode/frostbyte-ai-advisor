@@ -1,0 +1,59 @@
+kind: AdaptiveDialog
+beginDialog:
+  kind: OnRecognizedIntent
+  id: main
+  intent:
+    displayName: SalesIntelligence
+    triggerQueries:
+      - top sellers
+      - what's selling
+      - best products
+      - show sales
+      - sales trends
+      - what are my top sellers
+      - top selling products this quarter
+      - what were my best sellers
+
+  actions:
+    - kind: SendActivity
+      id: sendActivity_thinking01
+      activity: Let me pull your sales data for the last 90 days...
+
+    - kind: InvokeFlowAction
+      id: invokeFlowAction_EKyyyk
+      input: {}
+      output:
+        binding:
+          salesjson: Topic.salesJson
+
+      flowId: 7ff499e2-c333-3eca-8bb6-2ab1c9411093
+
+    - kind: InvokeAIBuilderModelAction
+      id: invokeAIBuilder_salesAnalyzer01
+      input:
+        binding:
+          sales_rows: =Topic.salesJson
+
+      output:
+        binding:
+          predictionOutput: Topic.varPredictionPromptOutputs
+
+      aIModelId: aa8c8df0-9111-4e30-b765-0e4b0545aae7
+
+    - kind: SendActivity
+      id: sendActivity_hZ6Kee
+      activity:
+        text:
+          - "{Topic.varPredictionPromptOutputs.text}"
+        quickReplies:
+          - kind: MessageBack
+            title: Compare to last quarter
+            text: Compare to last quarter
+
+          - kind: MessageBack
+            title: Forecast demand for top flavors
+            text: Forecast demand for top flavors
+
+          - kind: MessageBack
+            title: Draft Restock Order
+            text: Draft Restock Order

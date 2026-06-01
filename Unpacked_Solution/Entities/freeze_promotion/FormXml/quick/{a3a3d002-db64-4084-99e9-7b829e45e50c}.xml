@@ -1,0 +1,111 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<forms xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <systemform>
+    <formid>{a3a3d002-db64-4084-99e9-7b829e45e50c}</formid>
+    <IntroducedVersion>1.0.0.0</IntroducedVersion>
+    <FormPresentation>1</FormPresentation>
+    <FormActivationState>1</FormActivationState>
+    <form>
+      <tabs>
+        <tab verticallayout="true" id="{5d15b4c7-5dd6-4fea-89fc-d99eeb0bac3d}" IsUserDefined="1">
+          <labels>
+            <label description="" languagecode="1033" />
+          </labels>
+          <columns>
+            <column width="100%">
+              <sections>
+                <section showlabel="false" showbar="false" IsUserDefined="0" id="{c330cb71-a6a8-4617-8d7b-ec88d75370fb}">
+                  <labels>
+                    <label description="GENERAL" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell id="{dd1b8fb4-be14-4bcf-81f6-325ec3d54b10}">
+                        <labels>
+                          <label description="Promotion Name" languagecode="1033" />
+                        </labels>
+                        <control id="freeze_name" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="freeze_name" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{03a81029-38fe-469b-a9f6-353d3bccc6cf}">
+                        <labels>
+                          <label description="Owner" languagecode="1033" />
+                        </labels>
+                        <control id="ownerid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="ownerid" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{ff1dbfa3-90e5-4577-a69e-b7a489086d4c}" locklevel="0" rowspan="1" colspan="1">
+                        <labels>
+                          <label description="Discount Value" languagecode="1033" />
+                        </labels>
+                        <control id="freeze_discount_value" classid="{C3EFE0C3-0EC6-42BE-8349-CBD9079DFD8E}" datafieldname="freeze_discount_value" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{983766ad-14c8-4cf1-b8a6-c155270ce5fd}" locklevel="0" rowspan="1" colspan="1">
+                        <labels>
+                          <label description="End Date" languagecode="1033" />
+                        </labels>
+                        <control id="freeze_end_date" classid="{5B773807-9FB2-42DB-97C3-7A91EFF8ADFF}" datafieldname="freeze_end_date" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{0ef51ba7-fc77-4c48-8f8d-b1e187a0c0ca}" locklevel="0" rowspan="1" colspan="1">
+                        <labels>
+                          <label description="Minimum Order Amount" languagecode="1033" />
+                        </labels>
+                        <control id="freeze_minimum_order_amount" classid="{533B9E00-756B-4312-95A0-DC888637AC78}" datafieldname="freeze_minimum_order_amount" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{d4f17b52-b625-4b4a-9406-dfca05251022}" locklevel="0" rowspan="1" colspan="1">
+                        <labels>
+                          <label description="Promotion Code" languagecode="1033" />
+                        </labels>
+                        <control id="freeze_promotion_code" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="freeze_promotion_code" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{11ee3cc4-bdd2-43cc-b659-e62f57a510d3}" locklevel="0" rowspan="1" colspan="1">
+                        <labels>
+                          <label description="Start Date" languagecode="1033" />
+                        </labels>
+                        <control id="freeze_start_date" classid="{5B773807-9FB2-42DB-97C3-7A91EFF8ADFF}" datafieldname="freeze_start_date" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{6019e080-5e12-4d19-b650-2d4a3a9bdb32}" locklevel="0" rowspan="1" colspan="1">
+                        <labels>
+                          <label description="Discount Type" languagecode="1033" />
+                        </labels>
+                        <control id="freeze_discount_type" classid="{3EF39988-22BB-4F0B-BBBE-64B5A3748AEE}" datafieldname="freeze_discount_type" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{f8b2e92b-16da-4368-b1ee-c72d9859f954}" locklevel="0" rowspan="1" colspan="1">
+                        <labels>
+                          <label description="Applicable Product Types" languagecode="1033" />
+                        </labels>
+                        <control id="freeze_applicable_product_types" classid="{4AA28AB7-9C13-4F57-A73D-AD894D048B5F}" datafieldname="freeze_applicable_product_types" disabled="false" />
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+              </sections>
+            </column>
+          </columns>
+        </tab>
+      </tabs>
+      <DisplayConditions Order="0" FallbackForm="true">
+        <Everyone />
+      </DisplayConditions>
+    </form>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>1</CanBeDeleted>
+    <LocalizedNames>
+      <LocalizedName description="Information" languagecode="1033" />
+    </LocalizedNames>
+  </systemform>
+</forms>

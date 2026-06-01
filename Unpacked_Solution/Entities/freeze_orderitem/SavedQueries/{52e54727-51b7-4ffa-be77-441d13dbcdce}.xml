@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<savedqueries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <savedquery>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>0</CanBeDeleted>
+    <isquickfindquery>0</isquickfindquery>
+    <isprivate>0</isprivate>
+    <isdefault>1</isdefault>
+    <savedqueryid>{52e54727-51b7-4ffa-be77-441d13dbcdce}</savedqueryid>
+    <layoutxml>
+      <grid name="freeze_orderitems" jump="freeze_name" select="1" icon="1" preview="1">
+        <row name="freeze_orderitem" id="freeze_orderitemid">
+          <cell name="freeze_name" width="300" />
+          <cell name="createdon" width="125" />
+          <cell name="freeze_flavor" width="100" />
+          <cell name="freeze_flavor_charge" width="121" />
+          <cell name="freeze_item_subtotal" width="116" />
+          <cell name="freeze_item_total" width="100" />
+          <cell name="freeze_order" width="100" />
+          <cell name="freeze_product" width="100" />
+          <cell name="freeze_quantity" width="100" />
+          <cell name="freeze_toppings_total" width="124" />
+          <cell name="freeze_base_price" width="100" />
+        </row>
+      </grid>
+    </layoutxml>
+    <querytype>2</querytype>
+    <fetchxml>
+      <fetch version="1.0" mapping="logical">
+        <entity name="freeze_orderitem">
+          <attribute name="freeze_orderitemid" />
+          <attribute name="freeze_name" />
+          <attribute name="createdon" />
+          <order attribute="freeze_name" descending="false" />
+          <filter type="and">
+            <condition attribute="statecode" operator="eq" value="0" />
+          </filter>
+          <attribute name="freeze_flavor" />
+          <attribute name="freeze_flavor_charge" />
+          <attribute name="freeze_item_subtotal" />
+          <attribute name="freeze_item_total" />
+          <attribute name="freeze_order" />
+          <attribute name="freeze_product" />
+          <attribute name="freeze_quantity" />
+          <attribute name="freeze_toppings_total" />
+          <attribute name="freeze_base_price" />
+        </entity>
+      </fetch>
+    </fetchxml>
+    <IntroducedVersion>1.0.0.0</IntroducedVersion>
+    <LocalizedNames>
+      <LocalizedName description="Order Item Associated View" languagecode="1033" />
+    </LocalizedNames>
+  </savedquery>
+</savedqueries>

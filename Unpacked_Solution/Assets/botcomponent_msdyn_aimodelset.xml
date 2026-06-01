@@ -1,0 +1,17 @@
+<botcomponent_msdyn_aimodelset>
+  <botcomponent_msdyn_aimodel botcomponentid.schemaname="freeze_FrostByteAIAdvisor.action.ProcessCompetitorFlyer" msdyn_aimodelid.msdyn_aimodelid="02fb0711-7c3a-48e9-9ee5-fff8ee01f027">
+    <iscustomizable>1</iscustomizable>
+  </botcomponent_msdyn_aimodel>
+  <botcomponent_msdyn_aimodel botcomponentid.schemaname="freeze_FrostByteAIAdvisor.topic.DemandForecasting" msdyn_aimodelid.msdyn_aimodelid="2b22ad6b-6f0c-48a3-b7d0-0835f1a00226">
+    <iscustomizable>1</iscustomizable>
+  </botcomponent_msdyn_aimodel>
+  <botcomponent_msdyn_aimodel botcomponentid.schemaname="freeze_FrostByteAIAdvisor.topic.PricingScenarios" msdyn_aimodelid.msdyn_aimodelid="cd1c332a-78e3-4948-a57f-cb61c367ece4">
+    <iscustomizable>1</iscustomizable>
+  </botcomponent_msdyn_aimodel>
+  <botcomponent_msdyn_aimodel botcomponentid.schemaname="freeze_FrostByteAIAdvisor.topic.PromotionAnalysis.topic" msdyn_aimodelid.msdyn_aimodelid="85600153-737f-4a4e-b14a-89cf6d206e3d">
+    <iscustomizable>1</iscustomizable>
+  </botcomponent_msdyn_aimodel>
+  <botcomponent_msdyn_aimodel botcomponentid.schemaname="freeze_FrostByteAIAdvisor.topic.SalesIntelligence.topic" msdyn_aimodelid.msdyn_aimodelid="aa8c8df0-9111-4e30-b765-0e4b0545aae7">
+    <iscustomizable>1</iscustomizable>
+  </botcomponent_msdyn_aimodel>
+</botcomponent_msdyn_aimodelset>
